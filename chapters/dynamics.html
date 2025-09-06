@@ -1,0 +1,720 @@
+<!-- File: chapters/dynamics.html -->
+<div class="chapter">
+    <button class="chapter-header js-chapter-toggle">
+        <h2>Chapter 2: Dynamics - Complete Reference</h2>
+        <span class="toggle-icon">+</span>
+    </button>
+    <div class="chapter-content">
+
+        <!-- Subsection Controls - Matching Main Header Style -->
+        <div class="header-controls subsection-controls">
+            <div class="view-controls">
+                <button class="control-btn expand-all-sub" data-chapter="dynamics">⊕ Expand All Sections</button>
+                <button class="control-btn collapse-all-sub" data-chapter="dynamics">⊖ Collapse All Sections</button>
+            </div>
+        </div>
+
+        <!-- Subsection 1: Newton's Laws -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Newton's Laws of Motion</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Law</th>
+                            <th>Mathematical Form</th>
+                            <th>Interpretation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>First Law</strong><br>(Inertia)</td>
+                            <td class="formula-equation" data-latex="\sum \vec{F} = 0 \Rightarrow \vec{v} = \text{constant}">
+                                <math><mo>∑</mo><mover><mi>F</mi><mo>→</mo></mover><mo>=</mo><mn>0</mn><mo>⇒</mo><mover><mi>v</mi><mo>→</mo></mover><mo>=</mo><mtext>constant</mtext></math>
+                            </td>
+                            <td>Objects maintain state of motion unless acted upon</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Second Law</strong><br>(F = ma)</td>
+                            <td>
+                                <div class="formula-equation" data-latex="\vec{F}_{net} = m\vec{a}">
+                                    <math><msub><mover><mi>F</mi><mo>→</mo></mover><mtext>net</mtext></msub><mo>=</mo><mi>m</mi><mover><mi>a</mi><mo>→</mo></mover></math>
+                                </div>
+                                <div class="formula-equation" data-latex="\vec{F} = \frac{d\vec{p}}{dt}">
+                                    <math><mover><mi>F</mi><mo>→</mo></mover><mo>=</mo><mfrac><mrow><mi>d</mi><mover><mi>p</mi><mo>→</mo></mover></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></math>
+                                </div>
+                            </td>
+                            <td>Force causes acceleration proportional to mass</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Third Law</strong><br>(Action-Reaction)</td>
+                            <td class="formula-equation" data-latex="\vec{F}_{12} = -\vec{F}_{21}">
+                                <math><msub><mover><mi>F</mi><mo>→</mo></mover><mn>12</mn></msub><mo>=</mo><mo>−</mo><msub><mover><mi>F</mi><mo>→</mo></mover><mn>21</mn></msub></math>
+                            </td>
+                            <td>Forces come in equal and opposite pairs</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="quick-reference">
+                        <h4>Component Form (3D):</h4>
+                        <table class="equation-table compact">
+                            <tr>
+                                <td>x-component</td>
+                                <td class="formula-equation" data-latex="\sum F_x = ma_x">
+                                    <math><mo>∑</mo><msub><mi>F</mi><mi>x</mi></msub><mo>=</mo><mi>m</mi><msub><mi>a</mi><mi>x</mi></msub></math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>y-component</td>
+                                <td class="formula-equation" data-latex="\sum F_y = ma_y">
+                                    <math><mo>∑</mo><msub><mi>F</mi><mi>y</mi></msub><mo>=</mo><mi>m</mi><msub><mi>a</mi><mi>y</mi></msub></math>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>z-component</td>
+                                <td class="formula-equation" data-latex="\sum F_z = ma_z">
+                                    <math><mo>∑</mo><msub><mi>F</mi><mi>z</mi></msub><mo>=</mo><mi>m</mi><msub><mi>a</mi><mi>z</mi></msub></math>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 2: Force Catalog -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Comprehensive Force Catalog</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Force Type</th>
+                            <th>Formula</th>
+                            <th>Direction & Notes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Weight</strong></td>
+                            <td class="formula-equation" data-latex="\vec{W} = m\vec{g}">
+                                <math><mover><mi>W</mi><mo>→</mo></mover><mo>=</mo><mi>m</mi><mover><mi>g</mi><mo>→</mo></mover></math>
+                            </td>
+                            <td>Downward, g = 9.81 m/s²</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Normal</strong></td>
+                            <td>
+                                <div class="formula-equation" data-latex="N = mg \text{ (flat surface)}">
+                                    <math><mi>N</mi><mo>=</mo><mi>m</mi><mi>g</mi></math>
+                                </div>
+                                <div class="formula-equation" data-latex="N = mg\cos\theta \text{ (incline)}">
+                                    <math><mi>N</mi><mo>=</mo><mi>m</mi><mi>g</mi><mo>cos</mo><mi>θ</mi></math>
+                                </div>
+                            </td>
+                            <td>Perpendicular to surface</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Static Friction</strong></td>
+                            <td class="formula-equation" data-latex="f_s \leq \mu_s N">
+                                <math><msub><mi>f</mi><mi>s</mi></msub><mo>≤</mo><msub><mi>μ</mi><mi>s</mi></msub><mi>N</mi></math>
+                            </td>
+                            <td>Opposes potential motion</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kinetic Friction</strong></td>
+                            <td class="formula-equation" data-latex="f_k = \mu_k N">
+                                <math><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><msub><mi>μ</mi><mi>k</mi></msub><mi>N</mi></math>
+                            </td>
+                            <td>Opposes actual motion, μₖ < μₛ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spring (Hooke's)</strong></td>
+                            <td class="formula-equation" data-latex="\vec{F}_s = -k\vec{x}">
+                                <math><msub><mover><mi>F</mi><mo>→</mo></mover><mi>s</mi></msub><mo>=</mo><mo>−</mo><mi>k</mi><mover><mi>x</mi><mo>→</mo></mover></math>
+                            </td>
+                            <td>Restoring, toward equilibrium</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tension</strong></td>
+                            <td class="formula-equation" data-latex="T">
+                                <math><mi>T</mi></math>
+                            </td>
+                            <td>Along rope/string direction</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drag (fluid)</strong></td>
+                            <td class="formula-equation" data-latex="F_d = \frac{1}{2}C_d \rho A v^2">
+                                <math><msub><mi>F</mi><mi>d</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>C</mi><mi>d</mi></msub><mi>ρ</mi><mi>A</mi><msup><mi>v</mi><mn>2</mn></msup></math>
+                            </td>
+                            <td>Opposes motion through fluid</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Buoyancy</strong></td>
+                            <td class="formula-equation" data-latex="F_b = \rho_{fluid} V_{displaced} g">
+                                <math><msub><mi>F</mi><mi>b</mi></msub><mo>=</mo><msub><mi>ρ</mi><mtext>fluid</mtext></msub><msub><mi>V</mi><mtext>disp</mtext></msub><mi>g</mi></math>
+                            </td>
+                            <td>Upward in fluid</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gravitational</strong></td>
+                            <td class="formula-equation" data-latex="F_g = G\frac{m_1 m_2}{r^2}">
+                                <math><msub><mi>F</mi><mi>g</mi></msub><mo>=</mo><mi>G</mi><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></math>
+                            </td>
+                            <td>Attractive, G = 6.67×10⁻¹¹ N·m²/kg²</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Electrostatic</strong></td>
+                            <td class="formula-equation" data-latex="F_e = k_e\frac{q_1 q_2}{r^2}">
+                                <math><msub><mi>F</mi><mi>e</mi></msub><mo>=</mo><msub><mi>k</mi><mi>e</mi></msub><mfrac><mrow><msub><mi>q</mi><mn>1</mn></msub><msub><mi>q</mi><mn>2</mn></msub></mrow><msup><mi>r</mi><mn>2</mn></msup></mfrac></math>
+                            </td>
+                            <td>Along line between charges</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 3: Inclined Planes -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Inclined Plane Dynamics</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Formula</th>
+                            <th>Condition</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Weight parallel</td>
+                            <td class="formula-equation" data-latex="F_{\parallel} = mg\sin\theta">
+                                <math><msub><mi>F</mi><mo>∥</mo></msub><mo>=</mo><mi>m</mi><mi>g</mi><mo>sin</mo><mi>θ</mi></math>
+                            </td>
+                            <td>Down the slope</td>
+                        </tr>
+                        <tr>
+                            <td>Weight perpendicular</td>
+                            <td class="formula-equation" data-latex="F_{\perp} = mg\cos\theta">
+                                <math><msub><mi>F</mi><mo>⊥</mo></msub><mo>=</mo><mi>m</mi><mi>g</mi><mo>cos</mo><mi>θ</mi></math>
+                            </td>
+                            <td>Into the surface</td>
+                        </tr>
+                        <tr>
+                            <td>Normal force</td>
+                            <td class="formula-equation" data-latex="N = mg\cos\theta">
+                                <math><mi>N</mi><mo>=</mo><mi>m</mi><mi>g</mi><mo>cos</mo><mi>θ</mi></math>
+                            </td>
+                            <td>Out from surface</td>
+                        </tr>
+                        <tr>
+                            <td>Max static friction</td>
+                            <td class="formula-equation" data-latex="f_{s,max} = \mu_s mg\cos\theta">
+                                <math><msub><mi>f</mi><mrow><mi>s</mi><mo>,</mo><mi>max</mi></mrow></msub><mo>=</mo><msub><mi>μ</mi><mi>s</mi></msub><mi>m</mi><mi>g</mi><mo>cos</mo><mi>θ</mi></math>
+                            </td>
+                            <td>Up the slope</td>
+                        </tr>
+                        <tr>
+                            <td>Critical angle</td>
+                            <td class="formula-equation" data-latex="\theta_{critical} = \tan^{-1}(\mu_s)">
+                                <math><msub><mi>θ</mi><mtext>crit</mtext></msub><mo>=</mo><msup><mo>tan</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>(</mo><msub><mi>μ</mi><mi>s</mi></msub><mo>)</mo></math>
+                            </td>
+                            <td>Object starts sliding</td>
+                        </tr>
+                        <tr>
+                            <td>Acceleration (no friction)</td>
+                            <td class="formula-equation" data-latex="a = g\sin\theta">
+                                <math><mi>a</mi><mo>=</mo><mi>g</mi><mo>sin</mo><mi>θ</mi></math>
+                            </td>
+                            <td>Down the slope</td>
+                        </tr>
+                        <tr>
+                            <td>Acceleration (with friction)</td>
+                            <td class="formula-equation" data-latex="a = g(\sin\theta - \mu_k\cos\theta)">
+                                <math><mi>a</mi><mo>=</mo><mi>g</mi><mo>(</mo><mo>sin</mo><mi>θ</mi><mo>−</mo><msub><mi>μ</mi><mi>k</mi></msub><mo>cos</mo><mi>θ</mi><mo>)</mo></math>
+                            </td>
+                            <td>If sliding down</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 4: Systems & Pulleys -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Connected Systems & Pulleys</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <h4>Atwood Machine</h4>
+                <table class="equation-table">
+                    <tr>
+                        <td>System acceleration</td>
+                        <td class="formula-equation" data-latex="a = \frac{(m_2 - m_1)g}{m_1 + m_2}">
+                            <math><mi>a</mi><mo>=</mo><mfrac><mrow><mo>(</mo><msub><mi>m</mi><mn>2</mn></msub><mo>−</mo><msub><mi>m</mi><mn>1</mn></msub><mo>)</mo><mi>g</mi></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tension</td>
+                        <td class="formula-equation" data-latex="T = \frac{2m_1 m_2 g}{m_1 + m_2}">
+                            <math><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><mi>g</mi></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                </table>
+
+                <h4>Modified Atwood (one mass on table)</h4>
+                <table class="equation-table">
+                    <tr>
+                        <td>Without friction</td>
+                        <td class="formula-equation" data-latex="a = \frac{m_2 g}{m_1 + m_2}">
+                            <math><mi>a</mi><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mn>2</mn></msub><mi>g</mi></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>With friction</td>
+                        <td class="formula-equation" data-latex="a = \frac{m_2 g - \mu_k m_1 g}{m_1 + m_2}">
+                            <math><mi>a</mi><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mn>2</mn></msub><mi>g</mi><mo>−</mo><msub><mi>μ</mi><mi>k</mi></msub><msub><mi>m</mi><mn>1</mn></msub><mi>g</mi></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                </table>
+
+                <h4>Two blocks in contact</h4>
+                <table class="equation-table">
+                    <tr>
+                        <td>Common acceleration</td>
+                        <td class="formula-equation" data-latex="a = \frac{F}{m_1 + m_2}">
+                            <math><mi>a</mi><mo>=</mo><mfrac><mi>F</mi><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Contact force</td>
+                        <td class="formula-equation" data-latex="F_{contact} = \frac{m_2 F}{m_1 + m_2}">
+                            <math><msub><mi>F</mi><mtext>contact</mtext></msub><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mn>2</mn></msub><mi>F</mi></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Subsection 5: Circular Motion -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Circular Motion Dynamics</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Formula</th>
+                            <th>Units</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Centripetal force</td>
+                            <td class="formula-equation" data-latex="F_c = \frac{mv^2}{r} = m\omega^2 r = \frac{4\pi^2 mr}{T^2}">
+                                <math><msub><mi>F</mi><mi>c</mi></msub><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac><mo>=</mo><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><mi>r</mi><mo>=</mo><mfrac><mrow><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><mi>m</mi><mi>r</mi></mrow><msup><mi>T</mi><mn>2</mn></msup></mfrac></math>
+                            </td>
+                            <td>N</td>
+                        </tr>
+                        <tr>
+                            <td>Centripetal acceleration</td>
+                            <td class="formula-equation" data-latex="a_c = \frac{v^2}{r} = \omega^2 r = \frac{4\pi^2 r}{T^2}">
+                                <math><msub><mi>a</mi><mi>c</mi></msub><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac><mo>=</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>r</mi><mo>=</mo><mfrac><mrow><mn>4</mn><msup><mi>π</mi><mn>2</mn></msup><mi>r</mi></mrow><msup><mi>T</mi><mn>2</mn></msup></mfrac></math>
+                            </td>
+                            <td>m/s²</td>
+                        </tr>
+                        <tr>
+                            <td>Banking angle (no friction)</td>
+                            <td class="formula-equation" data-latex="\tan\theta = \frac{v^2}{rg}">
+                                <math><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mrow><mi>r</mi><mi>g</mi></mrow></mfrac></math>
+                            </td>
+                            <td>rad or deg</td>
+                        </tr>
+                        <tr>
+                            <td>Max speed (flat curve)</td>
+                            <td class="formula-equation" data-latex="v_{max} = \sqrt{\mu_s gr}">
+                                <math><msub><mi>v</mi><mi>max</mi></msub><mo>=</mo><msqrt><msub><mi>μ</mi><mi>s</mi></msub><mi>g</mi><mi>r</mi></msqrt></math>
+                            </td>
+                            <td>m/s</td>
+                        </tr>
+                        <tr>
+                            <td>Vertical circle (top)</td>
+                            <td class="formula-equation" data-latex="T + mg = \frac{mv^2}{r}">
+                                <math><mi>T</mi><mo>+</mo><mi>m</mi><mi>g</mi><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac></math>
+                            </td>
+                            <td>Min speed: v = √(gr)</td>
+                        </tr>
+                        <tr>
+                            <td>Vertical circle (bottom)</td>
+                            <td class="formula-equation" data-latex="T - mg = \frac{mv^2}{r}">
+                                <math><mi>T</mi><mo>−</mo><mi>m</mi><mi>g</mi><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac></math>
+                            </td>
+                            <td>Max tension</td>
+                        </tr>
+                        <tr>
+                            <td>Conical pendulum</td>
+                            <td class="formula-equation" data-latex="r = L\sin\theta, \; T = \frac{2\pi L\cos\theta}{\sqrt{g}}">
+                                <math><mi>r</mi><mo>=</mo><mi>L</mi><mo>sin</mo><mi>θ</mi><mo>,</mo><mspace width="1em"/><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>L</mi><mo>cos</mo><mi>θ</mi></mrow><msqrt><mi>g</mi></msqrt></mfrac></math>
+                            </td>
+                            <td>Period independent of mass</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 6: Momentum & Collisions -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Momentum & Collisions</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <h4>Momentum Fundamentals</h4>
+                <table class="equation-table">
+                    <tr>
+                        <td>Linear momentum</td>
+                        <td class="formula-equation" data-latex="\vec{p} = m\vec{v}">
+                            <math><mover><mi>p</mi><mo>→</mo></mover><mo>=</mo><mi>m</mi><mover><mi>v</mi><mo>→</mo></mover></math>
+                        </td>
+                        <td>kg·m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Impulse</td>
+                        <td class="formula-equation" data-latex="\vec{J} = \vec{F}_{avg}\Delta t = \Delta\vec{p}">
+                            <math><mover><mi>J</mi><mo>→</mo></mover><mo>=</mo><msub><mover><mi>F</mi><mo>→</mo></mover><mi>avg</mi></msub><mo>Δ</mo><mi>t</mi><mo>=</mo><mo>Δ</mo><mover><mi>p</mi><mo>→</mo></mover></math>
+                        </td>
+                        <td>N·s</td>
+                    </tr>
+                    <tr>
+                        <td>Conservation</td>
+                        <td class="formula-equation" data-latex="\sum\vec{p}_{before} = \sum\vec{p}_{after}">
+                            <math><mo>∑</mo><msub><mover><mi>p</mi><mo>→</mo></mover><mi>before</mi></msub><mo>=</mo><mo>∑</mo><msub><mover><mi>p</mi><mo>→</mo></mover><mi>after</mi></msub></math>
+                        </td>
+                        <td>Isolated system</td>
+                    </tr>
+                </table>
+
+                <h4>Collision Types</h4>
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Momentum</th>
+                        <th>Kinetic Energy</th>
+                        <th>Coefficient of Restitution</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><strong>Elastic</strong></td>
+                        <td>Conserved</td>
+                        <td>Conserved</td>
+                        <td>e = 1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inelastic</strong></td>
+                        <td>Conserved</td>
+                        <td>Not conserved</td>
+                        <td>0 < e < 1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfectly Inelastic</strong></td>
+                        <td>Conserved</td>
+                        <td>Maximum loss</td>
+                        <td>e = 0 (stick together)</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h4>1D Collision Formulas</h4>
+                <table class="equation-table compact">
+                    <tr>
+                        <td>Elastic (equal mass)</td>
+                        <td class="formula-equation" data-latex="v_1' = v_2, \; v_2' = v_1">
+                            <math><msubsup><mi>v</mi><mn>1</mn><mo>′</mo></msubsup><mo>=</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><mspace width="0.5em"/><msubsup><mi>v</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><msub><mi>v</mi><mn>1</mn></msub></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Elastic (general)</td>
+                        <td class="formula-equation" data-latex="v_1' = \frac{(m_1-m_2)v_1 + 2m_2v_2}{m_1+m_2}">
+                            <math><msubsup><mi>v</mi><mn>1</mn><mo>′</mo></msubsup><mo>=</mo><mfrac><mrow><mo>(</mo><msub><mi>m</mi><mn>1</mn></msub><mo>−</mo><msub><mi>m</mi><mn>2</mn></msub><mo>)</mo><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mn>2</mn><msub><mi>m</mi><mn>2</mn></msub><msub><mi>v</mi><mn>2</mn></msub></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Perfectly inelastic</td>
+                        <td class="formula-equation" data-latex="v_f = \frac{m_1v_1 + m_2v_2}{m_1+m_2}">
+                            <math><msub><mi>v</mi><mi>f</mi></msub><mo>=</mo><mfrac><mrow><msub><mi>m</mi><mn>1</mn></msub><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub><msub><mi>v</mi><mn>2</mn></msub></mrow><mrow><msub><mi>m</mi><mn>1</mn></msub><mo>+</mo><msub><mi>m</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Coefficient of restitution</td>
+                        <td class="formula-equation" data-latex="e = -\frac{v_1' - v_2'}{v_1 - v_2}">
+                            <math><mi>e</mi><mo>=</mo><mo>−</mo><mfrac><mrow><msubsup><mi>v</mi><mn>1</mn><mo>′</mo></msubsup><mo>−</mo><msubsup><mi>v</mi><mn>2</mn><mo>′</mo></msubsup></mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Subsection 7: Work & Energy (Brief) -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Work-Energy Connection</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Concept</th>
+                        <th>Formula</th>
+                        <th>Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Work by constant force</td>
+                        <td class="formula-equation" data-latex="W = \vec{F} \cdot \vec{d} = Fd\cos\theta">
+                            <math><mi>W</mi><mo>=</mo><mover><mi>F</mi><mo>→</mo></mover><mo>·</mo><mover><mi>d</mi><mo>→</mo></mover><mo>=</mo><mi>F</mi><mi>d</mi><mo>cos</mo><mi>θ</mi></math>
+                        </td>
+                        <td>Joules (N·m)</td>
+                    </tr>
+                    <tr>
+                        <td>Work-Energy theorem</td>
+                        <td class="formula-equation" data-latex="W_{net} = \Delta KE = \frac{1}{2}mv_f^2 - \frac{1}{2}mv_i^2">
+                            <math><msub><mi>W</mi><mi>net</mi></msub><mo>=</mo><mo>Δ</mo><mi>KE</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msubsup><mi>v</mi><mi>f</mi><mn>2</mn></msubsup><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><msubsup><mi>v</mi><mi>i</mi><mn>2</mn></msubsup></math>
+                        </td>
+                        <td>Links force to energy</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td class="formula-equation" data-latex="P = \frac{dW}{dt} = \vec{F} \cdot \vec{v}">
+                            <math><mi>P</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>W</mi></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mover><mi>F</mi><mo>→</mo></mover><mo>·</mo><mover><mi>v</mi><mo>→</mo></mover></math>
+                        </td>
+                        <td>Watts (J/s)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Subsection 8: Example Problems -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Worked Examples</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="example-problem">
+                    <h4>Example 1: Block on Incline with Friction</h4>
+                    <div class="problem-statement">
+                        A 5 kg block rests on a 30° incline with μₛ = 0.4 and μₖ = 0.3. Find:
+                        <ol>
+                            <li>Will it slide?</li>
+                            <li>If pushed and released, what is its acceleration?</li>
+                        </ol>
+                    </div>
+                    <div class="solution">
+                        <p><strong>Given:</strong> m = 5 kg, θ = 30°, μₛ = 0.4, μₖ = 0.3</p>
+                        <p><strong>Solution:</strong></p>
+                        <p>1) Check static condition:</p>
+                        <p>F∥ = mg sin(30°) = 5 × 9.81 × 0.5 = 24.5 N</p>
+                        <p>fₛ,max = μₛmg cos(30°) = 0.4 × 5 × 9.81 × 0.866 = 17.0 N</p>
+                        <p>Since F∥ > fₛ,max → Block will slide!</p>
+                        <p>2) Acceleration while sliding:</p>
+                        <p>a = g(sin θ - μₖ cos θ) = 9.81(0.5 - 0.3 × 0.866) = 2.35 m/s²</p>
+                        <p class="answer">Answer: Yes, it slides. Acceleration = 2.35 m/s² down the incline</p>
+                    </div>
+                </div>
+
+                <div class="example-problem">
+                    <h4>Example 2: Two-Block System with Pulley</h4>
+                    <div class="problem-statement">
+                        m₁ = 8 kg on a frictionless table connected by a rope over a pulley to m₂ = 3 kg hanging. Find acceleration and tension.
+                    </div>
+                    <div class="solution">
+                        <p><strong>Free body analysis:</strong></p>
+                        <p>m₁: T = m₁a (horizontal)</p>
+                        <p>m₂: m₂g - T = m₂a (vertical)</p>
+                        <p><strong>Solving:</strong></p>
+                        <p>a = m₂g/(m₁ + m₂) = 3 × 9.81/(8 + 3) = 2.68 m/s²</p>
+                        <p>T = m₁a = 8 × 2.68 = 21.4 N</p>
+                        <p class="answer">Answer: a = 2.68 m/s², T = 21.4 N</p>
+                    </div>
+                </div>
+
+                <div class="example-problem">
+                    <h4>Example 3: Elastic Collision</h4>
+                    <div class="problem-statement">
+                        Ball A (2 kg) moving at 5 m/s collides elastically with ball B (3 kg) initially at rest. Find final velocities.
+                    </div>
+                    <div class="solution">
+                        <p><strong>Given:</strong> m₁ = 2 kg, v₁ = 5 m/s, m₂ = 3 kg, v₂ = 0 m/s</p>
+                        <p><strong>Using elastic collision formulas:</strong></p>
+                        <p>v₁' = [(m₁ - m₂)v₁ + 2m₂v₂]/(m₁ + m₂)</p>
+                        <p>v₁' = [(2 - 3) × 5 + 0]/(2 + 3) = -1 m/s</p>
+                        <p>v₂' = [2m₁v₁ + (m₂ - m₁)v₂]/(m₁ + m₂)</p>
+                        <p>v₂' = [2 × 2 × 5 + 0]/(2 + 3) = 4 m/s</p>
+                        <p class="answer">Answer: Ball A: -1 m/s (rebounds), Ball B: 4 m/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 9: Interactive Simulations -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Interactive Simulations</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <!-- Force Analysis Simulation -->
+                <div class="formula-item interactive-plot" data-plot-id="force-analysis-sim">
+                    <h4>Newton's Second Law Simulator</h4>
+                    <p class="formula-description">Visualize how force, mass, and friction affect acceleration.</p>
+                    <div class="plot-controls">
+                        <div class="control-group">
+                            <label>Applied Force (N): <span id="force-val">50 N</span></label>
+                            <input type="range" id="force-slider" min="0" max="200" value="50" step="5">
+                        </div>
+                        <div class="control-group">
+                            <label>Mass (kg): <span id="mass-val">10 kg</span></label>
+                            <input type="range" id="mass-slider" min="1" max="50" value="10" step="1">
+                        </div>
+                        <div class="control-group">
+                            <label>Friction Coefficient: <span id="friction-val">0.2</span></label>
+                            <input type="range" id="friction-slider" min="0" max="1" value="0.2" step="0.05">
+                        </div>
+                        <div class="control-group">
+                            <button id="reset-sim" class="action-btn">Reset</button>
+                        </div>
+                    </div>
+                    <div class="sim-info-grid">
+                        <div class="info-item">Net Force: <span id="net-force">0 N</span></div>
+                        <div class="info-item">Acceleration: <span id="acceleration">0 m/s²</span></div>
+                        <div class="info-item">Velocity: <span id="velocity">0 m/s</span></div>
+                        <div class="info-item">Position: <span id="position">0 m</span></div>
+                    </div>
+                    <canvas id="forceCanvas" width="800" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 10: Quick Reference -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Quick Reference Card</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="reference-card">
+                    <h4>Problem-Solving Strategy:</h4>
+                    <ol class="strategy-list">
+                        <li><strong>Draw free-body diagram</strong> - Show all forces as vectors</li>
+                        <li><strong>Choose coordinate system</strong> - Align with motion or incline</li>
+                        <li><strong>Apply Newton's Second Law</strong> - ΣF = ma for each direction</li>
+                        <li><strong>Identify constraints</strong> - Same tension, same acceleration, etc.</li>
+                        <li><strong>Solve system of equations</strong> - Often simultaneous equations</li>
+                        <li><strong>Check answer</strong> - Units, direction, magnitude reasonable?</li>
+                    </ol>
+
+                    <h4>Common Mistakes:</h4>
+                    <ul class="mistakes-list">
+                        <li>Forgetting to include all forces (especially normal force)</li>
+                        <li>Wrong friction formula (static vs kinetic)</li>
+                        <li>Sign errors in force components</li>
+                        <li>Not recognizing constraint forces (tension, normal)</li>
+                        <li>Mixing up mass and weight</li>
+                        <li>Incorrect angle in force decomposition</li>
+                    </ul>
+
+                    <h4>Quick Checks:</h4>
+                    <table class="equation-table compact">
+                        <tr>
+                            <td>Free fall</td>
+                            <td>a = g = 9.81 m/s² down</td>
+                        </tr>
+                        <tr>
+                            <td>No friction incline</td>
+                            <td>a = g sin θ</td>
+                        </tr>
+                        <tr>
+                            <td>Terminal velocity</td>
+                            <td>ΣF = 0, v = constant</td>
+                        </tr>
+                        <tr>
+                            <td>Equilibrium</td>
+                            <td>ΣF = 0, a = 0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Subsection Toggle Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Subsection toggles
+        document.querySelectorAll('.js-subsection-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const subsection = button.closest('.subsection');
+                const content = subsection.querySelector('.subsection-content');
+                subsection.classList.toggle('active');
+                content.style.maxHeight = subsection.classList.contains('active')
+                    ? content.scrollHeight + "px"
+                    : null;
+            });
+        });
+
+        // Expand all subsections
+        document.querySelectorAll('.expand-all-sub').forEach(button => {
+            button.addEventListener('click', function() {
+                const chapter = button.closest('.chapter-content');
+                chapter.querySelectorAll('.subsection').forEach(subsection => {
+                    subsection.classList.add('active');
+                    const content = subsection.querySelector('.subsection-content');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                });
+            });
+        });
+
+        // Collapse all subsections
+        document.querySelectorAll('.collapse-all-sub').forEach(button => {
+            button.addEventListener('click', function() {
+                const chapter = button.closest('.chapter-content');
+                chapter.querySelectorAll('.subsection').forEach(subsection => {
+                    subsection.classList.remove('active');
+                    const content = subsection.querySelector('.subsection-content');
+                    content.style.maxHeight = null;
+                });
+            });
+        });
+    });
+</script>

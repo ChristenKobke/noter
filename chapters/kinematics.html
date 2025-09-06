@@ -1,0 +1,715 @@
+<!-- File: chapters/kinematics.html -->
+<div class="chapter">
+    <button class="chapter-header js-chapter-toggle">
+        <h2>Chapter 1: Kinematics - Complete Reference</h2>
+        <span class="toggle-icon">+</span>
+    </button>
+    <div class="chapter-content">
+
+        <!-- Section 1: Fundamental Definitions -->
+        <div class="formula-item">
+            <h3>Fundamental Definitions</h3>
+            <div class="equation-grid">
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Definition</th>
+                        <th>Units</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Position</td>
+                        <td class="formula-equation" data-latex="\vec{r}(t) \text{ or } x(t)">
+                            <math><mover><mi>r</mi><mo>→</mo></mover><mo>(</mo><mi>t</mi><mo>)</mo><mtext> or </mtext><mi>x</mi><mo>(</mo><mi>t</mi><mo>)</mo></math>
+                        </td>
+                        <td>meters (m)</td>
+                    </tr>
+                    <tr>
+                        <td>Displacement</td>
+                        <td class="formula-equation" data-latex="\Delta \vec{r} = \vec{r}_f - \vec{r}_i">
+                            <math><mo>Δ</mo><mover><mi>r</mi><mo>→</mo></mover><mo>=</mo><msub><mover><mi>r</mi><mo>→</mo></mover><mi>f</mi></msub><mo>−</mo><msub><mover><mi>r</mi><mo>→</mo></mover><mi>i</mi></msub></math>
+                        </td>
+                        <td>meters (m)</td>
+                    </tr>
+                    <tr>
+                        <td>Velocity</td>
+                        <td class="formula-equation" data-latex="\vec{v} = \frac{d\vec{r}}{dt}">
+                            <math><mover><mi>v</mi><mo>→</mo></mover><mo>=</mo><mfrac><mrow><mi>d</mi><mover><mi>r</mi><mo>→</mo></mover></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac></math>
+                        </td>
+                        <td>m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td class="formula-equation" data-latex="\vec{a} = \frac{d\vec{v}}{dt} = \frac{d^2\vec{r}}{dt^2}">
+                            <math><mover><mi>a</mi><mo>→</mo></mover><mo>=</mo><mfrac><mrow><mi>d</mi><mover><mi>v</mi><mo>→</mo></mover></mrow><mrow><mi>d</mi><mi>t</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msup><mi>d</mi><mn>2</mn></msup><mover><mi>r</mi><mo>→</mo></mover></mrow><mrow><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac></math>
+                        </td>
+                        <td>m/s²</td>
+                    </tr>
+                    <tr>
+                        <td>Average Velocity</td>
+                        <td class="formula-equation" data-latex="\vec{v}_{avg} = \frac{\Delta \vec{r}}{\Delta t}">
+                            <math><msub><mover><mi>v</mi><mo>→</mo></mover><mrow><mi>avg</mi></mrow></msub><mo>=</mo><mfrac><mrow><mo>Δ</mo><mover><mi>r</mi><mo>→</mo></mover></mrow><mrow><mo>Δ</mo><mi>t</mi></mrow></mfrac></math>
+                        </td>
+                        <td>m/s</td>
+                    </tr>
+                    <tr>
+                        <td>Average Acceleration</td>
+                        <td class="formula-equation" data-latex="\vec{a}_{avg} = \frac{\Delta \vec{v}}{\Delta t}">
+                            <math><msub><mover><mi>a</mi><mo>→</mo></mover><mrow><mi>avg</mi></mrow></msub><mo>=</mo><mfrac><mrow><mo>Δ</mo><mover><mi>v</mi><mo>→</mo></mover></mrow><mrow><mo>Δ</mo><mi>t</mi></mrow></mfrac></math>
+                        </td>
+                        <td>m/s²</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: 1D Kinematics Equations -->
+        <div class="formula-item">
+            <h3>1D Kinematics - Constant Acceleration Equations</h3>
+            <div class="equation-grid">
+                <table class="equation-table compact">
+                    <thead>
+                    <tr>
+                        <th>Equation</th>
+                        <th>Missing Variable</th>
+                        <th>Use When</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="formula-equation" data-latex="v = v_0 + at">
+                            <math><mi>v</mi><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mo>+</mo><mi>a</mi><mi>t</mi></math>
+                        </td>
+                        <td>Δx</td>
+                        <td>Finding final velocity</td>
+                    </tr>
+                    <tr>
+                        <td class="formula-equation" data-latex="\Delta x = v_0 t + \frac{1}{2}at^2">
+                            <math><mo>Δ</mo><mi>x</mi><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><msup><mi>t</mi><mn>2</mn></msup></math>
+                        </td>
+                        <td>v</td>
+                        <td>Finding displacement</td>
+                    </tr>
+                    <tr>
+                        <td class="formula-equation" data-latex="v^2 = v_0^2 + 2a\Delta x">
+                            <math><msup><mi>v</mi><mn>2</mn></msup><mo>=</mo><msubsup><mi>v</mi><mn>0</mn><mn>2</mn></msubsup><mo>+</mo><mn>2</mn><mi>a</mi><mo>Δ</mo><mi>x</mi></math>
+                        </td>
+                        <td>t</td>
+                        <td>Time-independent</td>
+                    </tr>
+                    <tr>
+                        <td class="formula-equation" data-latex="\Delta x = \frac{v + v_0}{2}t">
+                            <math><mo>Δ</mo><mi>x</mi><mo>=</mo><mfrac><mrow><mi>v</mi><mo>+</mo><msub><mi>v</mi><mn>0</mn></msub></mrow><mn>2</mn></mfrac><mi>t</mi></math>
+                        </td>
+                        <td>a</td>
+                        <td>Using average velocity</td>
+                    </tr>
+                    <tr>
+                        <td class="formula-equation" data-latex="\Delta x = vt - \frac{1}{2}at^2">
+                            <math><mo>Δ</mo><mi>x</mi><mo>=</mo><mi>v</mi><mi>t</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><msup><mi>t</mi><mn>2</mn></msup></math>
+                        </td>
+                        <td>v₀</td>
+                        <td>Working backwards</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Quick Reference Box -->
+            <div class="quick-reference">
+                <h4>Variable Definitions:</h4>
+                <ul class="variable-list">
+                    <li><strong>x₀</strong>: Initial position</li>
+                    <li><strong>v₀</strong>: Initial velocity</li>
+                    <li><strong>v</strong>: Final velocity</li>
+                    <li><strong>a</strong>: Acceleration (constant)</li>
+                    <li><strong>t</strong>: Time elapsed</li>
+                    <li><strong>Δx</strong>: Displacement (x - x₀)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 3: 2D Kinematics -->
+        <div class="formula-item">
+            <h3>2D Kinematics - Projectile Motion</h3>
+            <div class="equation-grid">
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Equations</th>
+                        <th>Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><strong>Horizontal (x)</strong></td>
+                        <td>
+                            <div class="formula-equation" data-latex="x = x_0 + v_{0x}t">
+                                <math><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>x</mi></mrow></msub><mi>t</mi></math>
+                            </div>
+                            <div class="formula-equation" data-latex="v_x = v_{0x} = v_0\cos\theta">
+                                <math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>x</mi></mrow></msub><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mo>cos</mo><mi>θ</mi></math>
+                            </div>
+                        </td>
+                        <td>No acceleration (aₓ = 0)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vertical (y)</strong></td>
+                        <td>
+                            <div class="formula-equation" data-latex="y = y_0 + v_{0y}t - \frac{1}{2}gt^2">
+                                <math><mi>y</mi><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow></msub><mi>t</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>g</mi><msup><mi>t</mi><mn>2</mn></msup></math>
+                            </div>
+                            <div class="formula-equation" data-latex="v_y = v_{0y} - gt = v_0\sin\theta - gt">
+                                <math><msub><mi>v</mi><mi>y</mi></msub><mo>=</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow></msub><mo>−</mo><mi>g</mi><mi>t</mi><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mo>sin</mo><mi>θ</mi><mo>−</mo><mi>g</mi><mi>t</mi></math>
+                            </div>
+                        </td>
+                        <td>g = 9.81 m/s² (down)</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <!-- Key Projectile Formulas -->
+                <h4>Key Projectile Motion Results:</h4>
+                <table class="equation-table compact">
+                    <tr>
+                        <td>Max Height</td>
+                        <td class="formula-equation" data-latex="h_{max} = \frac{v_{0y}^2}{2g} = \frac{v_0^2\sin^2\theta}{2g}">
+                            <math><msub><mi>h</mi><mrow><mi>max</mi></mrow></msub><mo>=</mo><mfrac><msubsup><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow><mn>2</mn></msubsup><mrow><mn>2</mn><mi>g</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><msubsup><mi>v</mi><mn>0</mn><mn>2</mn></msubsup><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mrow><mrow><mn>2</mn><mi>g</mi></mrow></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time to Max Height</td>
+                        <td class="formula-equation" data-latex="t_{max} = \frac{v_{0y}}{g} = \frac{v_0\sin\theta}{g}">
+                            <math><msub><mi>t</mi><mrow><mi>max</mi></mrow></msub><mo>=</mo><mfrac><msub><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow></msub><mi>g</mi></mfrac><mo>=</mo><mfrac><mrow><msub><mi>v</mi><mn>0</mn></msub><mo>sin</mo><mi>θ</mi></mrow><mi>g</mi></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Range</td>
+                        <td class="formula-equation" data-latex="R = \frac{v_0^2\sin(2\theta)}{g}">
+                            <math><mi>R</mi><mo>=</mo><mfrac><mrow><msubsup><mi>v</mi><mn>0</mn><mn>2</mn></msubsup><mo>sin</mo><mo>(</mo><mn>2</mn><mi>θ</mi><mo>)</mo></mrow><mi>g</mi></mfrac></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total Flight Time</td>
+                        <td class="formula-equation" data-latex="T = \frac{2v_0\sin\theta}{g}">
+                            <math><mi>T</mi><mo>=</mo><mfrac><mrow><mn>2</mn><msub><mi>v</mi><mn>0</mn></msub><mo>sin</mo><mi>θ</mi></mrow><mi>g</mi></mfrac></math>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 4: 3D & Vector Kinematics -->
+        <div class="formula-item">
+            <h3>3D & Vector Kinematics</h3>
+            <div class="equation-grid">
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Vector Form</th>
+                        <th>Component Form</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="formula-equation" data-latex="\vec{r}(t) = \vec{r}_0 + \vec{v}_0 t + \frac{1}{2}\vec{a}t^2">
+                            <math><mover><mi>r</mi><mo>→</mo></mover><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><msub><mover><mi>r</mi><mo>→</mo></mover><mn>0</mn></msub><mo>+</mo><msub><mover><mi>v</mi><mo>→</mo></mover><mn>0</mn></msub><mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mover><mi>a</mi><mo>→</mo></mover><msup><mi>t</mi><mn>2</mn></msup></math>
+                        </td>
+                        <td>
+                            <div class="component-equations">
+                                    <span class="formula-equation" data-latex="x = x_0 + v_{0x}t + \frac{1}{2}a_x t^2">
+                                        <math><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>x</mi></mrow></msub><mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>a</mi><mi>x</mi></msub><msup><mi>t</mi><mn>2</mn></msup></math>
+                                    </span>
+                                <span class="formula-equation" data-latex="y = y_0 + v_{0y}t + \frac{1}{2}a_y t^2">
+                                        <math><mi>y</mi><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow></msub><mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>a</mi><mi>y</mi></msub><msup><mi>t</mi><mn>2</mn></msup></math>
+                                    </span>
+                                <span class="formula-equation" data-latex="z = z_0 + v_{0z}t + \frac{1}{2}a_z t^2">
+                                        <math><mi>z</mi><mo>=</mo><msub><mi>z</mi><mn>0</mn></msub><mo>+</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>z</mi></mrow></msub><mi>t</mi><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>a</mi><mi>z</mi></msub><msup><mi>t</mi><mn>2</mn></msup></math>
+                                    </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="formula-equation" data-latex="\vec{v}(t) = \vec{v}_0 + \vec{a}t">
+                            <math><mover><mi>v</mi><mo>→</mo></mover><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><msub><mover><mi>v</mi><mo>→</mo></mover><mn>0</mn></msub><mo>+</mo><mover><mi>a</mi><mo>→</mo></mover><mi>t</mi></math>
+                        </td>
+                        <td>
+                            <div class="component-equations">
+                                    <span class="formula-equation" data-latex="v_x = v_{0x} + a_x t">
+                                        <math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>x</mi></mrow></msub><mo>+</mo><msub><mi>a</mi><mi>x</mi></msub><mi>t</mi></math>
+                                    </span>
+                                <span class="formula-equation" data-latex="v_y = v_{0y} + a_y t">
+                                        <math><msub><mi>v</mi><mi>y</mi></msub><mo>=</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>y</mi></mrow></msub><mo>+</mo><msub><mi>a</mi><mi>y</mi></msub><mi>t</mi></math>
+                                    </span>
+                                <span class="formula-equation" data-latex="v_z = v_{0z} + a_z t">
+                                        <math><msub><mi>v</mi><mi>z</mi></msub><mo>=</mo><msub><mi>v</mi><mrow><mn>0</mn><mi>z</mi></mrow></msub><mo>+</mo><msub><mi>a</mi><mi>z</mi></msub><mi>t</mi></math>
+                                    </span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Magnitude and Direction -->
+            <div class="quick-reference">
+                <h4>Vector Magnitude & Direction:</h4>
+                <table class="equation-table compact">
+                    <tr>
+                        <td>Position Magnitude</td>
+                        <td class="formula-equation" data-latex="|\vec{r}| = \sqrt{x^2 + y^2 + z^2}">
+                            <math><mo>|</mo><mover><mi>r</mi><mo>→</mo></mover><mo>|</mo><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Velocity Magnitude</td>
+                        <td class="formula-equation" data-latex="|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}">
+                            <math><mo>|</mo><mover><mi>v</mi><mo>→</mo></mover><mo>|</mo><mo>=</mo><msqrt><mrow><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>v</mi><mi>y</mi><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>v</mi><mi>z</mi><mn>2</mn></msubsup></mrow></msqrt></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Direction (2D)</td>
+                        <td class="formula-equation" data-latex="\theta = \tan^{-1}\left(\frac{v_y}{v_x}\right)">
+                            <math><mi>θ</mi><mo>=</mo><msup><mo>tan</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mfenced><mfrac><msub><mi>v</mi><mi>y</mi></msub><msub><mi>v</mi><mi>x</mi></msub></mfrac></mfenced></math>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 5: Circular Motion -->
+        <div class="formula-item">
+            <h3>Circular Motion Kinematics</h3>
+            <div class="equation-grid">
+                <table class="equation-table">
+                    <thead>
+                    <tr>
+                        <th>Linear</th>
+                        <th>Angular</th>
+                        <th>Relationship</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Position: s</td>
+                        <td>Angle: θ</td>
+                        <td class="formula-equation" data-latex="s = r\theta">
+                            <math><mi>s</mi><mo>=</mo><mi>r</mi><mi>θ</mi></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Velocity: v</td>
+                        <td>Angular velocity: ω</td>
+                        <td class="formula-equation" data-latex="v = r\omega">
+                            <math><mi>v</mi><mo>=</mo><mi>r</mi><mi>ω</mi></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration: aₜ</td>
+                        <td>Angular acceleration: α</td>
+                        <td class="formula-equation" data-latex="a_t = r\alpha">
+                            <math><msub><mi>a</mi><mi>t</mi></msub><mo>=</mo><mi>r</mi><mi>α</mi></math>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Centripetal acceleration</td>
+                        <td class="formula-equation" data-latex="a_c = \frac{v^2}{r} = \omega^2 r">
+                            <math><msub><mi>a</mi><mi>c</mi></msub><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac><mo>=</mo><msup><mi>ω</mi><mn>2</mn></msup><mi>r</mi></math>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 6: Example Problems -->
+        <div class="formula-item">
+            <h3>Example Problems</h3>
+
+            <div class="example-problem">
+                <h4>Example 1: 1D Motion - Car Braking</h4>
+                <div class="problem-statement">
+                    A car traveling at 30 m/s applies brakes with constant deceleration of 5 m/s². Find:
+                    <ol>
+                        <li>Time to stop</li>
+                        <li>Stopping distance</li>
+                    </ol>
+                </div>
+                <div class="solution">
+                    <p><strong>Given:</strong> v₀ = 30 m/s, v = 0 m/s, a = -5 m/s²</p>
+                    <p><strong>Solution:</strong></p>
+                    <p>1) Using v = v₀ + at:</p>
+                    <p class="formula-equation">0 = 30 + (-5)t → t = 6 s</p>
+                    <p>2) Using v² = v₀² + 2aΔx:</p>
+                    <p class="formula-equation">0 = 900 + 2(-5)Δx → Δx = 90 m</p>
+                    <p class="answer">Answer: 6 seconds to stop, 90 meters stopping distance</p>
+                </div>
+            </div>
+
+            <div class="example-problem">
+                <h4>Example 2: Projectile Motion - Ball Launch</h4>
+                <div class="problem-statement">
+                    A ball is launched at 25 m/s at 40° above horizontal. Find:
+                    <ol>
+                        <li>Maximum height</li>
+                        <li>Range</li>
+                        <li>Time of flight</li>
+                    </ol>
+                </div>
+                <div class="solution">
+                    <p><strong>Given:</strong> v₀ = 25 m/s, θ = 40°, g = 9.81 m/s²</p>
+                    <p><strong>Components:</strong></p>
+                    <p>v₀ₓ = 25 cos(40°) = 19.15 m/s</p>
+                    <p>v₀ᵧ = 25 sin(40°) = 16.07 m/s</p>
+                    <p><strong>Solution:</strong></p>
+                    <p>1) Max height: h = v₀ᵧ²/(2g) = 16.07²/(2×9.81) = 13.16 m</p>
+                    <p>2) Flight time: T = 2v₀ᵧ/g = 2×16.07/9.81 = 3.28 s</p>
+                    <p>3) Range: R = v₀ₓ × T = 19.15 × 3.28 = 62.81 m</p>
+                    <p class="answer">Answer: Height = 13.2 m, Range = 62.8 m, Time = 3.3 s</p>
+                </div>
+            </div>
+
+            <div class="example-problem">
+                <h4>Example 3: Circular Motion</h4>
+                <div class="problem-statement">
+                    A car rounds a curve of radius 50 m at 20 m/s. Find the centripetal acceleration.
+                </div>
+                <div class="solution">
+                    <p><strong>Given:</strong> r = 50 m, v = 20 m/s</p>
+                    <p><strong>Solution:</strong></p>
+                    <p>Using aₒ = v²/r:</p>
+                    <p class="formula-equation">aₒ = 20²/50 = 400/50 = 8 m/s²</p>
+                    <p class="answer">Answer: Centripetal acceleration = 8 m/s² toward center</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: Interactive 1D Motion Plot -->
+        <div class="formula-item interactive-plot" data-plot-id="kinematics-1d-chartjs">
+            <h3>Interactive Plot: 1D Motion Analysis</h3>
+            <p class="formula-description">Visualize position, velocity, and acceleration graphs for constant acceleration motion.</p>
+            <div class="plot-controls">
+                <div class="control-group">
+                    <label>Initial Position (x₀): <span id="k-x0-val">0.0 m</span></label>
+                    <input type="range" id="k-x0-slider" min="-20" max="20" value="0" step="1">
+                </div>
+                <div class="control-group">
+                    <label>Initial Velocity (v₀): <span id="k-v0-val">10.0 m/s</span></label>
+                    <input type="range" id="k-v0-slider" min="-20" max="20" value="10" step="1">
+                </div>
+                <div class="control-group">
+                    <label>Acceleration (a): <span id="k-acc-val">-2.0 m/s²</span></label>
+                    <input type="range" id="k-acc-slider" min="-10" max="10" value="-2" step="0.5">
+                </div>
+            </div>
+            <div class="plot-window">
+                <canvas class="plot-canvas" id="kinematicsPlot"></canvas>
+                <div class="resize-handle"></div>
+            </div>
+        </div>
+
+        <!-- Section 8: Projectile Motion Simulator -->
+        <div class="formula-item interactive-plot" data-plot-id="projectile-sim">
+            <h3>Interactive Projectile Motion Simulator</h3>
+            <p class="formula-description">Launch projectiles and observe trajectory, velocity vectors, and key parameters.</p>
+            <div class="plot-controls">
+                <div class="control-group">
+                    <label>Initial Speed (v₀): <span id="proj-v0-val">25 m/s</span></label>
+                    <input type="range" id="proj-v0-slider" min="5" max="50" value="25" step="1">
+                </div>
+                <div class="control-group">
+                    <label>Launch Angle (θ): <span id="proj-angle-val">45°</span></label>
+                    <input type="range" id="proj-angle-slider" min="0" max="90" value="45" step="5">
+                </div>
+                <div class="control-group">
+                    <label>Initial Height (y₀): <span id="proj-h0-val">0 m</span></label>
+                    <input type="range" id="proj-h0-slider" min="0" max="20" value="0" step="1">
+                </div>
+                <div class="control-group">
+                    <button id="launch-projectile" class="action-btn">Launch</button>
+                    <button id="reset-projectile" class="action-btn">Reset</button>
+                </div>
+            </div>
+            <div class="sim-info-grid">
+                <div class="info-item">Max Height: <span id="proj-max-height">--</span> m</div>
+                <div class="info-item">Range: <span id="proj-range">--</span> m</div>
+                <div class="info-item">Time of Flight: <span id="proj-time">--</span> s</div>
+                <div class="info-item">Impact Speed: <span id="proj-impact-v">--</span> m/s</div>
+            </div>
+            <canvas id="projectileCanvas" width="800" height="400"></canvas>
+        </div>
+
+        <!-- Section 9: Quick Reference Summary -->
+        <div class="formula-item">
+            <h3>Quick Reference Card</h3>
+            <div class="reference-card">
+                <h4>Problem-Solving Strategy:</h4>
+                <ol class="strategy-list">
+                    <li><strong>Identify knowns and unknowns</strong> - List all given values and what you need to find</li>
+                    <li><strong>Choose coordinate system</strong> - Set positive directions and origin</li>
+                    <li><strong>Select appropriate equations</strong> - Pick based on what's missing</li>
+                    <li><strong>Check dimensions</strong> - Ensure units are consistent</li>
+                    <li><strong>Verify answer</strong> - Does it make physical sense?</li>
+                </ol>
+
+                <h4>Common Mistakes to Avoid:</h4>
+                <ul class="mistakes-list">
+                    <li>Mixing up displacement (Δx) with position (x)</li>
+                    <li>Forgetting that acceleration can be negative</li>
+                    <li>Not considering initial conditions (v₀, x₀)</li>
+                    <li>Using wrong sign for g in projectile motion (-9.81 m/s²)</li>
+                    <li>Confusing average and instantaneous values</li>
+                </ul>
+
+                <h4>Special Cases:</h4>
+                <table class="equation-table compact">
+                    <tr>
+                        <td>Free Fall</td>
+                        <td>v₀ = 0, a = -g</td>
+                    </tr>
+                    <tr>
+                        <td>Horizontal Launch</td>
+                        <td>θ = 0°, v₀y = 0</td>
+                    </tr>
+                    <tr>
+                        <td>Maximum Range</td>
+                        <td>θ = 45° (on level ground)</td>
+                    </tr>
+                    <tr>
+                        <td>Uniform Motion</td>
+                        <td>a = 0, v = constant</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Additional Styles for Compact Layout -->
+<style>
+    .equation-grid {
+        margin: 10px 0;
+    }
+
+    .equation-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10px 0;
+        background: var(--equation-bg, white);
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .equation-table th {
+        background: var(--header-bg, #008B8B);
+        color: var(--header-text, white);
+        padding: 8px;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.95em;
+    }
+
+    .equation-table td {
+        padding: 8px;
+        border-bottom: 1px solid var(--border-color, #eee);
+    }
+
+    .equation-table.compact td {
+        padding: 6px 8px;
+    }
+
+    .equation-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .equation-table .formula-equation {
+        margin: 0;
+        padding: 5px;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        display: inline-block;
+    }
+
+    .component-equations {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .component-equations .formula-equation {
+        padding: 3px 5px;
+        background: var(--equation-bg, #f9f9f9);
+        border-radius: 3px;
+    }
+
+    .quick-reference {
+        background: var(--item-bg, #f8f9fa);
+        border-left: 3px solid var(--item-border-accent, #b8d4d4);
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+    }
+
+    .quick-reference h4 {
+        color: var(--item-header-text, #006666);
+        margin-bottom: 10px;
+        margin-top: 0;
+    }
+
+    .variable-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .variable-list li {
+        background: var(--equation-bg, white);
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid var(--border-color, #eee);
+        font-size: 0.9em;
+    }
+
+    .example-problem {
+        background: var(--equation-bg, white);
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .example-problem h4 {
+        color: var(--item-header-text, #006666);
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--border-color, #eee);
+    }
+
+    .problem-statement {
+        background: var(--item-bg, #f8f9fa);
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .solution {
+        padding: 10px;
+    }
+
+    .solution p {
+        margin: 5px 0;
+    }
+
+    .solution .formula-equation {
+        background: var(--equation-bg, #f9f9f9);
+        padding: 8px;
+        margin: 8px 0;
+        border-radius: 3px;
+        display: block;
+        text-align: center;
+    }
+
+    .answer {
+        background: var(--header-bg, #008B8B);
+        color: var(--header-text, white);
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-weight: 600;
+    }
+
+    .reference-card {
+        background: linear-gradient(135deg, var(--item-bg, #f8f9fa) 0%, var(--equation-bg, white) 100%);
+        border: 2px solid var(--item-border-accent, #b8d4d4);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px var(--shadow-color, rgba(0,0,0,0.1));
+    }
+
+    .reference-card h4 {
+        color: var(--item-header-text, #006666);
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .strategy-list, .mistakes-list {
+        margin: 10px 0 20px 20px;
+    }
+
+    .strategy-list li, .mistakes-list li {
+        margin: 8px 0;
+        line-height: 1.4;
+    }
+
+    .sim-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+    }
+
+    .info-item {
+        background: var(--item-bg, #f8f9fa);
+        padding: 8px 12px;
+        border-radius: 5px;
+        border: 1px solid var(--border-color, #ddd);
+        font-size: 0.9em;
+    }
+
+    .info-item span {
+        font-weight: 600;
+        color: var(--item-header-text, #006666);
+    }
+
+    .action-btn {
+        padding: 8px 16px;
+        background: var(--header-bg, #008B8B);
+        color: var(--header-text, white);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .action-btn:hover {
+        background: var(--header-accent, #006666);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px var(--shadow-color, rgba(0,0,0,0.2));
+    }
+
+    #projectileCanvas {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 5px;
+        background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 70%, #90EE90 70%, #90EE90 100%);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .variable-list {
+            grid-template-columns: 1fr;
+        }
+
+        .sim-info-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .component-equations {
+            font-size: 0.85em;
+        }
+    }
+</style>

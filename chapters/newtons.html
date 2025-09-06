@@ -1,0 +1,211 @@
+<!-- File: chapters/using_newtons_laws.html -->
+<div class="chapter">
+    <button class="chapter-header js-chapter-toggle">
+        <h2>Chapter 5: Using Newton’s Laws</h2>
+        <span class="toggle-icon">+</span>
+    </button>
+    <div class="chapter-content">
+        <!-- Subsection Controls - Matching Main Header Style -->
+        <div class="header-controls subsection-controls">
+            <div class="view-controls">
+                <button class="control-btn expand-all-sub" data-chapter="using-newtons-laws">⊕ Expand All Sections</button>
+                <button class="control-btn collapse-all-sub" data-chapter="using-newtons-laws">⊖ Collapse All Sections</button>
+            </div>
+        </div>
+
+        <!-- Subsection 1: Friction -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Properties of Friction</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <p>Friction is a resistive force that opposes motion or the tendency of motion between surfaces in contact.</p>
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Friction Type</th>
+                            <th>Formula</th>
+                            <th>Key Characteristics</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Static Friction</strong></td>
+                            <td class="formula-equation" data-latex="f_s \leq \mu_s N">
+                                <math><msub><mi>f</mi><mi>s</mi></msub><mo>≤</mo><msub><mi>μ</mi><mi>s</mi></msub><mi>N</mi></math>
+                            </td>
+                            <td>Prevents motion from starting. Its magnitude matches the applied force up to a maximum value.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kinetic Friction</strong></td>
+                            <td class="formula-equation" data-latex="f_k = \mu_k N">
+                                <math><msub><mi>f</mi><mi>k</mi></msub><mo>=</mo><msub><mi>μ</mi><mi>k</mi></msub><mi>N</mi></math>
+                            </td>
+                            <td>Acts on a sliding object with a constant magnitude. Typically, μₖ < μₛ.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 2: Drag Forces -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Drag Forces and Terminal Speed</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <p>Drag is the resistive force from a fluid (like air) that opposes an object's motion. When the drag force equals the force of gravity, the object reaches a constant terminal speed.</p>
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Drag Force (Magnitude)</th>
+                            <th>Terminal Speed Formula</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>High Speed / Turbulent Flow</strong></td>
+                            <td class="formula-equation" data-latex="F_d = \frac{1}{2} C \rho A v^2">
+                                <math><msub><mi>F</mi><mi>d</mi></msub><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>C</mi><mi>ρ</mi><mi>A</mi><msup><mi>v</mi><mn>2</mn></msup></math>
+                            </td>
+                            <td class="formula-equation" data-latex="v_t = \sqrt{\frac{2mg}{C\rho A}}">
+                                <math><msub><mi>v</mi><mi>t</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mn>2</mn><mi>m</mi><mi>g</mi></mrow><mrow><mi>C</mi><mi>ρ</mi><mi>A</mi></mrow></mfrac></msqrt></math>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Low Speed / Laminar Flow</strong></td>
+                            <td class="formula-equation" data-latex="F_d = bv">
+                                <math><msub><mi>F</mi><mi>d</mi></msub><mo>=</mo><mi>b</mi><mi>v</mi></math>
+                            </td>
+                            <td class="formula-equation" data-latex="v_t = \frac{mg}{b}">
+                                <math><msub><mi>v</mi><mi>t</mi></msub><mo>=</mo><mfrac><mrow><mi>m</mi><mi>g</mi></mrow><mi>b</mi></mfrac></math>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 3: Uniform Circular Motion -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Dynamics of Uniform Circular Motion</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <p>An object in uniform circular motion has a constant speed but a continuously changing velocity, meaning it is always accelerating. This acceleration, directed toward the center of the circle, is caused by a net centripetal force.</p>
+                <div class="equation-grid">
+                    <table class="equation-table">
+                        <thead>
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Formula</th>
+                            <th>Notes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Centripetal Acceleration</strong></td>
+                            <td class="formula-equation" data-latex="a_c = \frac{v^2}{r}">
+                                <math><msub><mi>a</mi><mi>c</mi></msub><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mi>r</mi></mfrac></math>
+                            </td>
+                            <td>Always directed toward the center of the circle.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Centripetal Force</strong></td>
+                            <td class="formula-equation" data-latex="\sum F_r = ma_c = \frac{mv^2}{r}">
+                                <math><mo>∑</mo><msub><mi>F</mi><mi>r</mi></msub><mo>=</mo><mi>m</mi><msub><mi>a</mi><mi>c</mi></msub><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac></math>
+                            </td>
+                            <td>This is the *net force* toward the center, not a separate force. It is the result of tension, friction, gravity, etc.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ideal Banked Curve</strong><br/>(No Friction)</td>
+                            <td class="formula-equation" data-latex="\tan\theta = \frac{v^2}{rg}">
+                                <math><mo>tan</mo><mi>θ</mi><mo>=</mo><mfrac><msup><mi>v</mi><mn>2</mn></msup><mrow><mi>r</mi><mi>g</mi></mrow></mfrac></math>
+                            </td>
+                            <td>Angle where the normal force's horizontal component provides the full centripetal force.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 4: Worked Examples -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Worked Examples</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="example-problem">
+                    <h4>Example 1: Crate Pulled at an Angle with Friction</h4>
+                    <div class="problem-statement">
+                        A 20 kg crate is pulled by a 100 N force at 30° above the horizontal. If μₖ = 0.2, what is the crate's acceleration?
+                    </div>
+                    <div class="solution">
+                        <p><strong>1. Analyze Vertical Forces (ΣFᵧ = 0):</strong></p>
+                        <p>The upward component of the pull reduces the normal force. N + Fsin(30°) - mg = 0</p>
+                        <p>N = mg - Fsin(30°) = (20)(9.81) - 100(0.5) = 196.2 - 50 = 146.2 N</p>
+                        <p><strong>2. Analyze Horizontal Forces (ΣFₓ = ma):</strong></p>
+                        <p>The net force is the horizontal pull component minus kinetic friction. fₖ = μₖN = 0.2 × 146.2 = 29.24 N</p>
+                        <p>F_net = Fcos(30°) - fₖ = 100(0.866) - 29.24 = 86.6 - 29.24 = 57.36 N</p>
+                        <p>a = F_net / m = 57.36 N / 20 kg = 2.87 m/s²</p>
+                        <p class="answer">Answer: The crate accelerates at 2.87 m/s².</p>
+                    </div>
+                </div>
+                <div class="example-problem">
+                    <h4>Example 2: Maximum Speed on a Flat Curve</h4>
+                    <div class="problem-statement">
+                        What is the max speed a 1500 kg car can navigate a flat curve of radius 50 m if μₛ = 0.9?
+                    </div>
+                    <div class="solution">
+                        <p><strong>1. Identify Centripetal Force:</strong> On a flat curve, static friction provides the centripetal force.</p>
+                        <p>F_c = fₛ_max → <math><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac><mo>=</mo><msub><mi>μ</mi><mi>s</mi></msub><mi>N</mi></math></p>
+                        <p><strong>2. Solve for v:</strong> On flat ground, N = mg.</p>
+                        <p><math><mfrac><mrow><mi>m</mi><msup><mi>v</mi><mn>2</mn></msup></mrow><mi>r</mi></mfrac><mo>=</mo><msub><mi>μ</mi><mi>s</mi></msub><mi>m</mi><mi>g</mi></math></p>
+                        <p>The mass 'm' cancels out:</p>
+                        <p><math><mi>v</mi><mo>=</mo><msqrt><msub><mi>μ</mi><mi>s</mi></msub><mi>g</mi><mi>r</mi></msqrt><mo>=</mo><msqrt><mn>0.9</mn><mo>×</mo><mn>9.81</mn><mo>×</mo><mn>50</mn></msqrt><mo>≈</mo><mn>21.0</mn><mtext> m/s</mtext></math></p>
+                        <p class="answer">Answer: The maximum speed is 21.0 m/s.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 5: Quick Reference Card -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Problem-Solving Reference</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="reference-card">
+                    <h4>Core Strategy:</h4>
+                    <ol class="strategy-list">
+                        <li><strong>Draw FBD:</strong> Isolate the object and draw all external forces acting on it.</li>
+                        <li><strong>Choose Axes:</strong> Align one axis with the direction of acceleration.</li>
+                        <li><strong>Apply ΣF = ma:</strong> Write component equations for each axis. (e.g., ΣFₓ = ma, ΣFᵧ = 0).</li>
+                        <li><strong>Solve:</strong> Solve the resulting system of algebraic equations.</li>
+                    </ol>
+                    <h4>Common Sticking Points:</h4>
+                    <ul class="mistakes-list">
+                        <li>Forgetting N ≠ mg on an incline or with vertical forces.</li>
+                        <li>Using kinetic friction (fₖ = μₖN) for a static situation.</li>
+                        <li>Treating centripetal force (mv²/r) as a separate force on the FBD. It is the *net result* of other forces.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

@@ -1,0 +1,65 @@
+/* ============================================= */
+/*          THEME DEFINITIONS FILE               */
+/* ============================================= */
+/* To add a new theme, create a new section like .theme-dark, */
+/* give it a unique name (e.g., .theme-solarized), and define all the color variables. */
+
+/* --- 1. Default Theme (Light) --- */
+/* This is active when no other theme class is applied to the body. */
+:root {
+    --bg-main: #f5f5f5;
+    --bg-container: white;
+    --text-primary: #333;
+    --text-secondary: #555;
+    --border-color: #ddd;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+
+    --header-bg: #008B8B;
+    --header-text: white;
+    --header-accent: #006666;
+
+    --item-bg: #f8f9fa;
+    --item-border-accent: #b8d4d4;
+    --item-header-text: #006666;
+
+    --equation-bg: white;
+    --equation-shadow: rgba(0, 0, 0, 0.1);
+
+    --highlight-bg: #fff3cd;
+    --highlight-text: #5d4500;
+
+    --button-active-bg: #006666;
+    --button-active-text: white;
+
+    --chart-grid-color: rgba(128, 128, 128, 0.2);
+}
+
+/* --- 2. Dark Theme --- */
+/* This theme activates when the body has the class="theme-dark" */
+body.theme-dark {
+    --bg-main: #1e1e1e;
+    --bg-container: #252526;
+    --text-primary: #d4d4d4;
+    --text-secondary: #a0a0a0;
+    --border-color: #3c3c3c;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+
+    --header-bg: #1a1a1a;
+    --header-text: #4ec9b0;
+    --header-accent: #4ec9b0;
+
+    --item-bg: #2a2a2a;
+    --item-border-accent: #4ec9b0;
+    --item-header-text: #4ec9b0;
+
+    --equation-bg: #1e1e1e;
+    --equation-shadow: rgba(0, 0, 0, 0.2);
+
+    --highlight-bg: #5a4b1d;
+    --highlight-text: #f0e68c;
+
+    --button-active-bg: #4ec9b0;
+    --button-active-text: #1a1a1a;
+
+    --chart-grid-color: rgba(128, 128, 128, 0.3);
+}

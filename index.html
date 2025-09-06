@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Formula Collection</title>
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="themes.css" as="style">
+    <link rel="preload" href="style.css" as="style">
+
+    <!-- Load CSS -->
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Defer non-critical libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
+    <!-- Performance monitoring -->
+    <script>
+        // Simple performance observer
+        window.performanceMetrics = {
+            startTime: performance.now(),
+            chaptersLoaded: 0,
+            plotsInitialized: 0
+        };
+    </script>
+</head>
+<body>
+<!-- Loading indicator -->
+<div id="loading-overlay" class="loading-overlay">
+    <div class="loader">
+        <div class="loader-spinner"></div>
+        <p>Loading Physics Collection...</p>
+    </div>
+</div>
+
+<header class="main-header">
+    <h1>Physics Formula Collection</h1>
+    <p class="subtitle">A modular reference for core physics principles</p>
+
+    <div class="header-controls">
+        <div class="theme-switcher">
+            <button class="theme-btn active" data-theme="light" aria-label="Light theme">Light</button>
+            <button class="theme-btn" data-theme="dark" aria-label="Dark theme">Dark</button>
+            <button class="theme-btn" data-theme="contrast" aria-label="High contrast theme">High Contrast</button>
+        </div>
+        <div class="search-container">
+            <input type="search"
+                   id="search-input"
+                   placeholder="Search formulas..."
+                   aria-label="Search formulas"
+                   autocomplete="off">
+            <button id="clear-search" class="clear-search" aria-label="Clear search" hidden>×</button>
+        </div>
+        <div class="view-controls">
+            <button id="expand-all" class="control-btn" aria-label="Expand all chapters">⊕ Expand All</button>
+            <button id="collapse-all" class="control-btn" aria-label="Collapse all chapters">⊖ Collapse All</button>
+        </div>
+    </div>
+
+    <!-- Chapter navigation -->
+    <nav id="chapter-nav" class="chapter-nav" aria-label="Chapter navigation">
+        <!-- Dynamically populated -->
+    </nav>
+</header>
+
+<main class="formula-collection">
+    <!-- Status bar -->
+    <div id="status-bar" class="status-bar" hidden>
+        <span id="status-message"></span>
+        <button id="status-action" class="status-action" hidden></button>
+    </div>
+
+    <!-- Main content container -->
+    <div id="formula-collection-container" role="main">
+        <!-- Chapters load here -->
+    </div>
+
+    <!-- No results message -->
+    <div id="no-results-message" class="no-results-message" hidden>
+        <p>No matching formulas found.</p>
+        <button id="clear-search-alt" class="control-btn">Clear Search</button>
+    </div>
+
+    <!-- Error state -->
+    <div id="error-container" class="error-container" hidden>
+        <h3>Unable to Load Content</h3>
+        <p id="error-message"></p>
+        <button id="retry-load" class="control-btn">Retry</button>
+    </div>
+</main>
+
+<!-- Footer with performance metrics (development mode) -->
+<footer id="dev-footer" class="dev-footer" hidden>
+    <div class="metrics">
+        <span>Load Time: <span id="load-time">--</span>ms</span>
+        <span>Chapters: <span id="chapter-count">0</span></span>
+        <span>Active Plots: <span id="plot-count">0</span></span>
+        <span>FPS: <span id="fps-counter">--</span></span>
+    </div>
+</footer>
+
+<!-- Animation controls overlay -->
+<div id="animation-controls" class="animation-controls" hidden>
+    <button id="play-pause" class="anim-btn" aria-label="Play/Pause">▶</button>
+    <button id="reset-anim" class="anim-btn" aria-label="Reset">↺</button>
+    <select id="speed-control" class="speed-control" aria-label="Animation speed">
+        <option value="0.25">0.25×</option>
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+        <option value="4">4×</option>
+    </select>
+</div>
+
+<!-- Load main script as module -->
+<script src="main.js" type="module"></script>
+
+<!-- Additional styles for new features -->
+<style>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--bg-main, rgba(255, 255, 255, 0.95));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+    }
+
+    .loading-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .loader {
+        text-align: center;
+    }
+
+    .loader-spinner {
+        border: 3px solid var(--border-color, #ddd);
+        border-top: 3px solid var(--header-accent, #006666);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .chapter-nav {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .chapter-nav-btn {
+        padding: 5px 12px;
+        background: rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 15px;
+        color: var(--header-text);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 0.9em;
+    }
+
+    .chapter-nav-btn:hover {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .chapter-nav-btn.active {
+        background: var(--bg-container);
+        color: var(--button-active-bg);
+    }
+
+    .view-controls {
+        display: flex;
+        gap: 10px;
+    }
+
+    .control-btn {
+        padding: 8px 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border: none;
+        border-radius: 20px;
+        color: var(--header-text);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9em;
+    }
+
+    .control-btn:hover {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .clear-search {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: var(--header-text);
+        padding: 5px;
+    }
+
+    .search-container {
+        position: relative;
+        flex-grow: 1;
+        max-width: 400px;
+    }
+
+    .status-bar {
+        background: var(--item-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .error-container {
+        text-align: center;
+        padding: 40px;
+        background: var(--bg-container);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+    }
+
+    .dev-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+        z-index: 1000;
+    }
+
+    .dev-footer .metrics {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .animation-controls {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--bg-container);
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        box-shadow: 0 2px 10px var(--shadow-color);
+        z-index: 100;
+    }
+
+    .anim-btn {
+        width: 35px;
+        height: 35px;
+        border: 1px solid var(--border-color);
+        background: var(--item-bg);
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .anim-btn:hover {
+        background: var(--header-accent);
+        color: white;
+    }
+
+    .speed-control {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+        background: var(--item-bg);
+        border-radius: 5px;
+    }
+
+    /* High contrast theme support */
+    body.theme-contrast {
+        --bg-main: #000;
+        --bg-container: #111;
+        --text-primary: #fff;
+        --text-secondary: #ccc;
+        --border-color: #fff;
+        --header-bg: #000;
+        --header-text: #ff0;
+        --header-accent: #ff0;
+        --item-bg: #222;
+        --item-border-accent: #ff0;
+        --item-header-text: #ff0;
+    }
+
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+        .header-controls {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .view-controls {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .chapter-nav {
+            display: none;
+        }
+    }
+</style>
+</body>
+</html>
