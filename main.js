@@ -6,7 +6,7 @@
 // --- CONFIGURATION ---
 const CONFIG = {
     CHAPTERS_DIRECTORY: 'chapters',
-    CHAPTERS_TO_LOAD: ['kinematics.html', 'dynamics.html', `newtons.html`],
+    CHAPTERS_TO_LOAD: ['kinematics.html', 'dynamics.html'],
     LAZY_LOAD_THRESHOLD: 100, // pixels before viewport
     ANIMATION_FPS: 60,
     DEBOUNCE_DELAY: 150,
@@ -660,25 +660,39 @@ class ChapterManager {
         }
     }
 
+    // UPDATED: Toggle chapter method with proper handling for subsections
     toggleChapter(chapter, forceState = null) {
         const content = chapter.querySelector('.chapter-content');
         if (!content) return;
 
         const isActive = forceState !== null ? forceState : !chapter.classList.contains('active');
 
+        // Check if chapter has subsections and add appropriate class
+        const hasSubsections = chapter.querySelectorAll('.subsection').length > 0;
+        chapter.classList.toggle('has-subsections', hasSubsections);
+
         if (isActive) {
             chapter.classList.add('active');
-            content.style.maxHeight = content.scrollHeight + "px";
 
-            // After opening chapter, check if we need to recalculate for subsections
-            setTimeout(() => {
-                if (chapter.classList.contains('active')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            }, 100);
+            if (hasSubsections) {
+                // For chapters with subsections, remove max-height constraint entirely
+                content.style.maxHeight = 'none';
+                content.style.overflow = 'visible';
+            } else {
+                // For regular chapters without subsections, calculate height for smooth animation
+                content.style.maxHeight = content.scrollHeight + "px";
+
+                // Recalculate after content settles
+                setTimeout(() => {
+                    if (chapter.classList.contains('active') && !hasSubsections) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                }, 100);
+            }
         } else {
             chapter.classList.remove('active');
             content.style.maxHeight = null;
+            content.style.overflow = null;
 
             // Clean up resources when closing
             this.cleanupChapterResources(chapter);

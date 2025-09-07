@@ -1,0 +1,492 @@
+<!-- File: chapters/simulations.html -->
+<div class="chapter">
+    <button class="chapter-header js-chapter-toggle">
+        <h2>Chapter 3: Interactive Physics Simulations</h2>
+        <span class="toggle-icon">+</span>
+    </button>
+    <div class="chapter-content">
+
+        <!-- Subsection Controls -->
+        <div class="header-controls subsection-controls">
+            <div class="view-controls">
+                <button class="control-btn expand-all-sub" data-chapter="simulations">⊕ Expand All Simulations</button>
+                <button class="control-btn collapse-all-sub" data-chapter="simulations">⊖ Collapse All Simulations</button>
+            </div>
+        </div>
+
+        <!-- Subsection 1: 1D Kinematics -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>1D Kinematics - Position, Velocity, Acceleration</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="kinematics-1d">
+                    <canvas class="sim-canvas" width="800" height="200"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 2: Projectile Motion -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>2D Kinematics - Projectile Motion</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="projectile-2d">
+                    <canvas class="sim-canvas" width="800" height="400"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 3: Newton's Laws -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Dynamics - Force and Acceleration</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="newton-dynamics">
+                    <canvas class="sim-canvas" width="800" height="200"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 4: Momentum & Collisions -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Momentum & Collisions (1D)</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="momentum-collision">
+                    <canvas class="sim-canvas" width="800" height="150"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 5: Simple Harmonic Motion -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Oscillations - Spring-Mass System</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="oscillations-shm">
+                    <canvas class="sim-canvas" width="800" height="150"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 6: Rotational Motion -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Rotational Dynamics - Torque & Angular Motion</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="rotational-dynamics">
+                    <canvas class="sim-canvas" width="800" height="300"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 7: Gravitation -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Gravitation - Orbital Motion</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="orbital-motion">
+                    <canvas class="sim-canvas" width="800" height="400"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 8: Waves -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Wave Motion - Standing & Traveling Waves</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="wave-motion">
+                    <canvas class="sim-canvas" width="800" height="250"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 9: Electrostatics -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Electrostatics - Electric Field Visualization</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="electric-field">
+                    <canvas class="sim-canvas" width="800" height="400"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subsection 10: Pendulum -->
+        <div class="subsection">
+            <button class="subsection-header js-subsection-toggle">
+                <h3>Pendulum - Simple & Physical</h3>
+                <span class="toggle-icon">+</span>
+            </button>
+            <div class="subsection-content">
+                <div class="simulation-container" data-sim-id="pendulum-motion">
+                    <canvas class="sim-canvas" width="800" height="400"></canvas>
+                    <pre class="tui-output"></pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* Simulation-specific styles */
+    .simulation-container {
+        background-color: #1e1e1e;
+        border: 1px solid #3c3c3c;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+    }
+
+    .sim-canvas {
+        display: block;
+        width: 100%;
+        background-color: #252526;
+        border: 1px solid #3c3c3c;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .tui-output {
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        line-height: 1.3;
+        background-color: #252526;
+        color: #d4d4d4;
+        padding: 15px;
+        border: 1px solid #3c3c3c;
+        border-radius: 4px;
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    /* TUI color classes */
+    .tui-header { color: #4ec9b0; font-weight: bold; }
+    .tui-param { color: #9cdcfe; }
+    .tui-value { color: #b5cea8; }
+    .tui-label { color: #757575; }
+    .tui-energy-ke { color: #b5cea8; }
+    .tui-energy-pe { color: #569cd6; }
+    .tui-energy-total { color: #ce9178; }
+    .tui-selected { background-color: #37373d; }
+    .tui-formula { color: #d7ba7d; }
+</style>
+
+<script>
+    // Simulation Controllers
+    const SIMULATIONS = {
+        'kinematics-1d': {
+            params: { x0: 0, v0: 10, a: -2 },
+            state: { t: 0, x: 0, v: 0 },
+            init: function(container) {
+                const canvas = container.querySelector('.sim-canvas');
+                const ctx = canvas.getContext('2d');
+                const tui = container.querySelector('.tui-output');
+
+                this.update = () => {
+                    const dt = 1/60;
+                    this.state.t += dt;
+                    this.state.x = this.params.x0 + this.params.v0 * this.state.t + 0.5 * this.params.a * this.state.t * this.state.t;
+                    this.state.v = this.params.v0 + this.params.a * this.state.t;
+
+                    // Draw
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.strokeStyle = '#555';
+                    ctx.beginPath();
+                    ctx.moveTo(0, canvas.height/2);
+                    ctx.lineTo(canvas.width, canvas.height/2);
+                    ctx.stroke();
+
+                    const xPos = (this.state.x + 50) * 5;
+                    ctx.fillStyle = '#569cd6';
+                    ctx.fillRect(xPos - 15, canvas.height/2 - 15, 30, 30);
+
+                    // TUI
+                    const ke = 0.5 * this.state.v * this.state.v;
+                    const keBar = '█'.repeat(Math.max(0, Math.min(30, Math.round(ke/10))));
+
+                    tui.textContent = `
+---[ 1D KINEMATICS SIMULATOR ]---
+Parameters:
+  Initial Position (x₀): ${this.params.x0.toFixed(1).padStart(7)} m
+  Initial Velocity (v₀): ${this.params.v0.toFixed(1).padStart(7)} m/s
+  Acceleration (a).....: ${this.params.a.toFixed(1).padStart(7)} m/s²
+--------------------------------------------------------------------------------
+State @ t = ${this.state.t.toFixed(2)}s:
+  Position (x).........: ${this.state.x.toFixed(2).padStart(7)} m
+  Velocity (v).........: ${this.state.v.toFixed(2).padStart(7)} m/s
+  Kinetic Energy.......: ${ke.toFixed(1).padStart(7)} J [${keBar.padEnd(30, '░')}]
+--------------------------------------------------------------------------------
+Equations: x = x₀ + v₀t + ½at²  |  v = v₀ + at  |  KE = ½mv²
+Controls: [R] Reset | [SPACE] Pause | [A/D] Adjust acceleration`;
+                };
+
+                this.animate = () => {
+                    this.update();
+                    if (this.running) requestAnimationFrame(() => this.animate());
+                };
+
+                this.running = true;
+                this.animate();
+            }
+        },
+
+        'projectile-2d': {
+            params: { v0: 30, angle: 45, g: 9.81 },
+            state: { t: 0, x: 0, y: 0, vx: 0, vy: 0, trail: [] },
+            init: function(container) {
+                const canvas = container.querySelector('.sim-canvas');
+                const ctx = canvas.getContext('2d');
+                const tui = container.querySelector('.tui-output');
+
+                const angleRad = this.params.angle * Math.PI / 180;
+                this.state.vx = this.params.v0 * Math.cos(angleRad);
+                this.state.vy = this.params.v0 * Math.sin(angleRad);
+
+                this.update = () => {
+                    const dt = 1/60;
+                    this.state.t += dt;
+                    this.state.x = this.state.vx * this.state.t;
+                    this.state.y = this.state.vy * this.state.t - 0.5 * this.params.g * this.state.t * this.state.t;
+
+                    if (this.state.trail.length > 100) this.state.trail.shift();
+                    this.state.trail.push({x: this.state.x, y: this.state.y});
+
+                    // Draw
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // Trail
+                    ctx.strokeStyle = 'rgba(150, 150, 255, 0.5)';
+                    ctx.beginPath();
+                    this.state.trail.forEach((p, i) => {
+                        const x = p.x * 3;
+                        const y = canvas.height - 50 - p.y * 3;
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                    });
+                    ctx.stroke();
+
+                    // Projectile
+                    const xPos = this.state.x * 3;
+                    const yPos = canvas.height - 50 - this.state.y * 3;
+                    ctx.fillStyle = '#f44336';
+                    ctx.beginPath();
+                    ctx.arc(xPos, yPos, 6, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    // Ground
+                    ctx.strokeStyle = '#555';
+                    ctx.beginPath();
+                    ctx.moveTo(0, canvas.height - 50);
+                    ctx.lineTo(canvas.width, canvas.height - 50);
+                    ctx.stroke();
+
+                    // Reset if hit ground
+                    if (this.state.y < 0) {
+                        this.state.t = 0;
+                        this.state.trail = [];
+                    }
+
+                    // TUI
+                    const v = Math.sqrt(this.state.vx**2 + (this.state.vy - this.params.g * this.state.t)**2);
+                    const ke = 0.5 * v * v;
+                    const pe = this.params.g * Math.max(0, this.state.y);
+                    const total = ke + pe;
+                    const maxE = 0.5 * this.params.v0 * this.params.v0;
+
+                    const keBar = '█'.repeat(Math.round((ke/maxE) * 25));
+                    const peBar = '█'.repeat(Math.round((pe/maxE) * 25));
+
+                    tui.textContent = `
+---[ 2D PROJECTILE MOTION ]---
+Launch Parameters:
+  Initial Velocity.: ${this.params.v0.toFixed(1).padStart(7)} m/s
+  Launch Angle.....: ${this.params.angle.toFixed(0).padStart(7)}°
+  Gravity (g)......: ${this.params.g.toFixed(2).padStart(7)} m/s²
+--------------------------------------------------------------------------------
+State @ t = ${this.state.t.toFixed(2)}s:
+  Position (x, y)..: (${this.state.x.toFixed(1)}, ${this.state.y.toFixed(1)}) m
+  Velocity.........: ${v.toFixed(1).padStart(7)} m/s
+--------------------------------------------------------------------------------
+Energy (m = 1 kg):
+  Kinetic..: ${ke.toFixed(1).padStart(6)} J [${keBar.padEnd(25, '░')}]
+  Potential: ${pe.toFixed(1).padStart(6)} J [${peBar.padEnd(25, '░')}]
+  Total....: ${total.toFixed(1).padStart(6)} J
+--------------------------------------------------------------------------------
+Max Height: ${(this.state.vy**2 / (2*this.params.g)).toFixed(1)} m | Range: ${(2*this.state.vx*this.state.vy/this.params.g).toFixed(1)} m`;
+                };
+
+                this.animate = () => {
+                    this.update();
+                    if (this.running) requestAnimationFrame(() => this.animate());
+                };
+
+                this.running = true;
+                this.animate();
+            }
+        },
+
+        'oscillations-shm': {
+            params: { m: 1, k: 100, b: 0.5, x0: 4 },
+            state: { t: 0, x: 4, v: 0 },
+            init: function(container) {
+                const canvas = container.querySelector('.sim-canvas');
+                const ctx = canvas.getContext('2d');
+                const tui = container.querySelector('.tui-output');
+
+                const omega0 = Math.sqrt(this.params.k / this.params.m);
+                const gamma = this.params.b / (2 * this.params.m);
+                const omega_d = Math.sqrt(Math.max(0, omega0*omega0 - gamma*gamma));
+                const maxE = 0.5 * this.params.k * this.params.x0 * this.params.x0;
+
+                this.update = () => {
+                    const dt = 1/60;
+                    this.state.t += dt;
+
+                    // Analytical solution for damped oscillator
+                    const A = this.params.x0;
+                    const t = this.state.t;
+                    this.state.x = A * Math.exp(-gamma * t) * Math.cos(omega_d * t);
+                    this.state.v = -A * Math.exp(-gamma * t) * (gamma * Math.cos(omega_d * t) + omega_d * Math.sin(omega_d * t));
+
+                    // Draw
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // Track
+                    ctx.strokeStyle = '#555';
+                    ctx.beginPath();
+                    ctx.moveTo(0, canvas.height/2);
+                    ctx.lineTo(canvas.width, canvas.height/2);
+                    ctx.stroke();
+
+                    // Spring
+                    const springX = canvas.width/2 + this.state.x * 30;
+                    ctx.strokeStyle = '#9cdcfe';
+                    ctx.beginPath();
+                    ctx.moveTo(100, canvas.height/2);
+                    for (let i = 1; i < 20; i++) {
+                        const x = 100 + (springX - 100) * i/20;
+                        const y = canvas.height/2 + (i % 2 ? 10 : -10);
+                        ctx.lineTo(x, y);
+                    }
+                    ctx.lineTo(springX, canvas.height/2);
+                    ctx.stroke();
+
+                    // Mass
+                    ctx.fillStyle = '#569cd6';
+                    ctx.fillRect(springX - 20, canvas.height/2 - 20, 40, 40);
+
+                    // Energy calculations
+                    const ke = 0.5 * this.params.m * this.state.v * this.state.v;
+                    const pe = 0.5 * this.params.k * this.state.x * this.state.x;
+                    const total = ke + pe;
+
+                    const keBar = '█'.repeat(Math.round((ke/maxE) * 30));
+                    const peBar = '█'.repeat(Math.round((pe/maxE) * 30));
+                    const teBar = '█'.repeat(Math.round((total/maxE) * 30));
+
+                    // TUI
+                    tui.innerHTML = `
+<span class="tui-header">---[ SIMPLE HARMONIC MOTION ]---</span>
+Parameters:
+  Mass (m).........: ${this.params.m.toFixed(1).padStart(7)} kg
+  Spring k.........: ${this.params.k.toFixed(0).padStart(7)} N/m
+  Damping b........: ${this.params.b.toFixed(1).padStart(7)} Ns/m
+  Initial x₀.......: ${this.params.x0.toFixed(1).padStart(7)} m
+--------------------------------------------------------------------------------
+<span class="tui-formula">Natural ω₀ = √(k/m) = ${omega0.toFixed(2)} rad/s  |  Period T = ${(2*Math.PI/omega0).toFixed(2)} s</span>
+--------------------------------------------------------------------------------
+State @ t = ${this.state.t.toFixed(2)}s:
+  Position.........: ${this.state.x.toFixed(3).padStart(7)} m
+  Velocity.........: ${this.state.v.toFixed(3).padStart(7)} m/s
+--------------------------------------------------------------------------------
+<span class="tui-energy-ke">  KE (½mv²): ${ke.toFixed(1).padStart(6)} J [${keBar.padEnd(30, '░')}]</span>
+<span class="tui-energy-pe">  PE (½kx²): ${pe.toFixed(1).padStart(6)} J [${peBar.padEnd(30, '░')}]</span>
+<span class="tui-energy-total">  Total....: ${total.toFixed(1).padStart(6)} J [${teBar.padEnd(30, '░')}]</span>
+--------------------------------------------------------------------------------
+Controls: [R] Reset | [A/D] Adjust damping | [W/S] Adjust spring constant`;
+                };
+
+                this.animate = () => {
+                    this.update();
+                    if (this.running) requestAnimationFrame(() => this.animate());
+                };
+
+                this.running = true;
+                this.animate();
+            }
+        }
+    };
+
+    // Initialize simulations when subsections are opened
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.js-subsection-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const subsection = button.closest('.subsection');
+                const container = subsection.querySelector('.simulation-container');
+
+                if (container && !container.dataset.initialized) {
+                    const simId = container.dataset.simId;
+                    if (SIMULATIONS[simId]) {
+                        SIMULATIONS[simId].init(container);
+                        container.dataset.initialized = 'true';
+                    }
+                }
+            });
+        });
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            const key = e.key.toLowerCase();
+
+            // Find active simulation
+            const activeContainers = document.querySelectorAll('.subsection.active .simulation-container[data-initialized="true"]');
+            activeContainers.forEach(container => {
+                const simId = container.dataset.simId;
+                const sim = SIMULATIONS[simId];
+
+                if (sim) {
+                    if (key === 'r') {
+                        // Reset simulation
+                        sim.state.t = 0;
+                        if (sim.state.trail) sim.state.trail = [];
+                    } else if (key === ' ') {
+                        // Toggle pause
+                        sim.running = !sim.running;
+                        if (sim.running && sim.animate) sim.animate();
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    });
+</script>

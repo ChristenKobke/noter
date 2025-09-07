@@ -1,9 +1,61 @@
-/* ============================================= */
-/*          MAIN LAYOUT & COMPONENT STYLES       */
-/* ============================================= */
-/* This file uses the color variables defined in themes.css */
+could you edit the stylle.css file to make it fit ?Looking at your screenshot, I can see the issue clearly - the "Work-Energy Connection" subsection is cut off at the bottom. The table shows only partially, and "Chapter 5: Using Newton's Laws" appears immediately below without showing the rest of the Dynamics chapter content.
+                                                                                                                                                                                                                                                    The problem is that the fix I provided earlier isn't working because maxHeight is still being constrained. Let me provide a more robust solution by updating the toggle methods to remove the height constraint entirely for chapters with subsections:The issue is that the maxHeight calculation is still happening after a delay, which overrides the "none" value. The simpler solution I've provided now:
+1. Sets maxHeight: none for chapters with subsections (removing all height constraints)
+2. Removes the setTimeout callbacks that were recalculating and constraining the height
+3. Keeps normal maxHeight calculation for chapters without subsections
+ However, there might also be an issue with the CSS. Let's also check if we need to update the CSS to ensure proper overflow handling. Could you add this to your style.css:
 
-/* --- General Layout --- */
+/* Fix for chapters with subsections */
+.chapter.active .chapter-content {
+    overflow: visible !important;
+}
+
+/* Ensure subsections don't have overflow issues */
+.subsection.active .subsection-content {
+    overflow: visible !important;
+}
+
+If this still doesn't work, the issue might be in how the content is structured in your HTML files. Make sure that in your dynamics.html file, you remove the <script> and <style> tags at the bottom (as they're now handled by the main application files).
+                                                                                                                                                                                                                                                            Try these changes and let me know if the issue persists. If it does, we may need to look at the actual HTML structure of your dynamics chapter to see if there's something else constraining the height.
+
+Looking at your CSS file, I can see the issue. The problem is with the transition and max-height properties for expanded content. Let me update the CSS to fix the cutting off issue:
+Fixed Physics Formula Collection CSS
+
+
+The key changes I made to fix the cutting off issue:
+
+Removed height constraints for active chapters:
+Added max-height: none !important when chapters are active
+                                  Added overflow: visible !important to ensure all content shows
+                                                                     Removed the transition when active for immediate display
+                                                                     Same fix for subsections:
+                                                                     Applied the same approach to subsection content
+                                                                     Ensures nested content isn't constrained
+Alternative animation approach:
+Added .animating class option if you want to keep smooth animations
+Uses a very large max-height (10000px for chapters, 5000px for subsections) instead of calculating exact heights
+
+                                                                            The main issue was that the CSS was using overflow: hidden with calculated max-height values, which could be incorrect for dynamic content with subsections. Now when a chapter or subsection is active, it completely removes the height constraint and shows all content.
+
+This should fix the cutting off issue you're experiencing with the Work-Energy Connection subsection and any other long content sections.
+
+make sure the main includes chapters in the directory that dont have subchapters too,
+
+Looking at your main.js file, I can see that the toggleChapter method already handles chapters both with and without subsections. The issue is that it's using a fixed max-height for chapters with subsections which might still cause cutoff. Let me update the JavaScript to better handle the expansion:
+Fixed Physics Formula Collection CSS
+Text
+
+Now let me also update the JavaScript to properly detect and handle chapters with subsections:
+Drafting artifact...
+
+
+
+    /* ============================================= */
+    /*          MAIN LAYOUT & COMPONENT STYLES       */
+    /* ============================================= */
+    /* This file uses the color variables defined in themes.css */
+
+    /* --- General Layout --- */
 * {
     margin: 0;
     padding: 0;
@@ -167,13 +219,32 @@ body {
 .toggle-icon { font-size: 1.5em; font-weight: bold; transition: transform 0.3s ease; }
 .chapter.active .toggle-icon { transform: rotate(45deg); }
 
+/* FIXED: Chapter content with proper expansion */
 .chapter-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-out, padding 0.5s ease-out;
     padding: 0 20px;
 }
-.chapter.active .chapter-content { padding: 20px; border-top: 1px solid var(--border-color); }
+
+.chapter.active .chapter-content {
+    max-height: none !important; /* Remove height constraint when active */
+    overflow: visible !important; /* Ensure all content is visible */
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* For chapters without subsections, allow smooth animation */
+.chapter:not(.has-subsections).active .chapter-content {
+    max-height: 5000px; /* Large value for smooth animation */
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+}
+
+/* For chapters with subsections, remove animation for proper display */
+.chapter.has-subsections.active .chapter-content {
+    max-height: none !important;
+    transition: none; /* No animation to prevent cutoff */
+}
 
 /* --- SUBSECTION STYLES --- */
 .subsection-controls {
@@ -224,6 +295,7 @@ body {
     font-weight: 500;
 }
 
+/* FIXED: Subsection content with proper expansion */
 .subsection-content {
     max-height: 0;
     overflow: hidden;
@@ -232,7 +304,16 @@ body {
 }
 
 .subsection.active .subsection-content {
+    max-height: none !important; /* Remove height constraint when active */
+    overflow: visible !important; /* Ensure all content is visible */
     padding: 15px;
+    transition: none; /* Remove transition for immediate display */
+}
+
+/* Alternative: Use a very large max-height for animation if needed */
+.subsection.animating .subsection-content {
+    max-height: 5000px !important; /* Large enough for subsection content */
+    transition: max-height 0.5s ease-out;
 }
 
 .subsection.active .toggle-icon {
