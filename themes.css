@@ -1,65 +1,268 @@
 /* ============================================= */
 /*          THEME DEFINITIONS FILE               */
 /* ============================================= */
-/* To add a new theme, create a new section like .theme-dark, */
-/* give it a unique name (e.g., .theme-solarized), and define all the color variables. */
+/* To add a new theme, create a new section like body.theme-dark, */
+/* give it a unique name (e.g., body.theme-solarized), and define all the color variables. */
 
 /* --- 1. Default Theme (Light) --- */
 /* This is active when no other theme class is applied to the body. */
 :root {
+    /* Main backgrounds */
     --bg-main: #f5f5f5;
     --bg-container: white;
+
+    /* Text colors */
     --text-primary: #333;
     --text-secondary: #555;
+
+    /* Borders and shadows */
     --border-color: #ddd;
     --shadow-color: rgba(0, 0, 0, 0.05);
 
+    /* Header styling */
     --header-bg: #008B8B;
     --header-text: white;
     --header-accent: #006666;
 
+    /* Item and formula styling */
     --item-bg: #f8f9fa;
     --item-border-accent: #b8d4d4;
     --item-header-text: #006666;
 
+    /* Equation styling */
     --equation-bg: white;
     --equation-shadow: rgba(0, 0, 0, 0.1);
 
+    /* Highlights and selections */
     --highlight-bg: #fff3cd;
     --highlight-text: #5d4500;
 
+    /* Button states */
     --button-active-bg: #006666;
     --button-active-text: white;
 
+    /* Chart/plot styling */
     --chart-grid-color: rgba(128, 128, 128, 0.2);
+
+    /* Additional useful variables */
+    --link-color: #0066cc;
+    --link-hover-color: #0052a3;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --error-color: #dc3545;
+    --info-color: #17a2b8;
 }
 
 /* --- 2. Dark Theme --- */
 /* This theme activates when the body has the class="theme-dark" */
 body.theme-dark {
+    /* Main backgrounds */
     --bg-main: #1e1e1e;
     --bg-container: #252526;
+
+    /* Text colors */
     --text-primary: #d4d4d4;
     --text-secondary: #a0a0a0;
-    --border-color: #3c3c3c;
-    --shadow-color: rgba(0, 0, 0, 0.2);
 
+    /* Borders and shadows */
+    --border-color: #3c3c3c;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Header styling */
     --header-bg: #1a1a1a;
     --header-text: #4ec9b0;
     --header-accent: #4ec9b0;
 
+    /* Item and formula styling */
     --item-bg: #2a2a2a;
     --item-border-accent: #4ec9b0;
     --item-header-text: #4ec9b0;
 
+    /* Equation styling */
     --equation-bg: #1e1e1e;
-    --equation-shadow: rgba(0, 0, 0, 0.2);
+    --equation-shadow: rgba(0, 0, 0, 0.3);
 
+    /* Highlights and selections */
     --highlight-bg: #5a4b1d;
     --highlight-text: #f0e68c;
 
+    /* Button states */
     --button-active-bg: #4ec9b0;
     --button-active-text: #1a1a1a;
 
+    /* Chart/plot styling */
     --chart-grid-color: rgba(128, 128, 128, 0.3);
+
+    /* Additional useful variables */
+    --link-color: #569cd6;
+    --link-hover-color: #7ab8e8;
+    --success-color: #4ec9b0;
+    --warning-color: #dcdcaa;
+    --error-color: #f48771;
+    --info-color: #9cdcfe;
+}
+
+/* --- 3. High Contrast Theme --- */
+/* Maximum accessibility with stark contrasts */
+body.theme-contrast {
+    /* Main backgrounds */
+    --bg-main: #000000;
+    --bg-container: #111111;
+
+    /* Text colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+
+    /* Borders and shadows */
+    --border-color: #ffffff;
+    --shadow-color: rgba(255, 255, 255, 0.2);
+
+    /* Header styling */
+    --header-bg: #000000;
+    --header-text: #ffff00;
+    --header-accent: #ffff00;
+
+    /* Item and formula styling */
+    --item-bg: #222222;
+    --item-border-accent: #ffff00;
+    --item-header-text: #ffff00;
+
+    /* Equation styling */
+    --equation-bg: #111111;
+    --equation-shadow: rgba(255, 255, 255, 0.2);
+
+    /* Highlights and selections */
+    --highlight-bg: #ffff00;
+    --highlight-text: #000000;
+
+    /* Button states */
+    --button-active-bg: #ffff00;
+    --button-active-text: #000000;
+
+    /* Chart/plot styling */
+    --chart-grid-color: rgba(255, 255, 255, 0.5);
+
+    /* Additional useful variables */
+    --link-color: #00ffff;
+    --link-hover-color: #00cccc;
+    --success-color: #00ff00;
+    --warning-color: #ffff00;
+    --error-color: #ff0000;
+    --info-color: #00ffff;
+}
+
+/* --- 4. Solarized Dark Theme (Bonus) --- */
+/* Based on the popular Solarized color scheme */
+body.theme-solarized {
+    /* Main backgrounds */
+    --bg-main: #002b36;
+    --bg-container: #073642;
+
+    /* Text colors */
+    --text-primary: #839496;
+    --text-secondary: #657b83;
+
+    /* Borders and shadows */
+    --border-color: #586e75;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Header styling */
+    --header-bg: #073642;
+    --header-text: #b58900;
+    --header-accent: #cb4b16;
+
+    /* Item and formula styling */
+    --item-bg: #073642;
+    --item-border-accent: #268bd2;
+    --item-header-text: #268bd2;
+
+    /* Equation styling */
+    --equation-bg: #002b36;
+    --equation-shadow: rgba(0, 0, 0, 0.3);
+
+    /* Highlights and selections */
+    --highlight-bg: #b58900;
+    --highlight-text: #002b36;
+
+    /* Button states */
+    --button-active-bg: #268bd2;
+    --button-active-text: #002b36;
+
+    /* Chart/plot styling */
+    --chart-grid-color: rgba(131, 148, 150, 0.2);
+
+    /* Additional useful variables */
+    --link-color: #268bd2;
+    --link-hover-color: #2aa198;
+    --success-color: #859900;
+    --warning-color: #b58900;
+    --error-color: #dc322f;
+    --info-color: #2aa198;
+}
+
+/* --- 5. Ocean Blue Theme --- */
+/* A calming blue-based theme */
+body.theme-ocean {
+    /* Main backgrounds */
+    --bg-main: #e6f2ff;
+    --bg-container: #ffffff;
+
+    /* Text colors */
+    --text-primary: #1a3a52;
+    --text-secondary: #4a6a8a;
+
+    /* Borders and shadows */
+    --border-color: #b3d9ff;
+    --shadow-color: rgba(26, 58, 82, 0.08);
+
+    /* Header styling */
+    --header-bg: linear-gradient(135deg, #0066cc, #004499);
+    --header-text: #ffffff;
+    --header-accent: #003366;
+
+    /* Item and formula styling */
+    --item-bg: #f0f8ff;
+    --item-border-accent: #0066cc;
+    --item-header-text: #004499;
+
+    /* Equation styling */
+    --equation-bg: #ffffff;
+    --equation-shadow: rgba(0, 102, 204, 0.1);
+
+    /* Highlights and selections */
+    --highlight-bg: #cce7ff;
+    --highlight-text: #003366;
+
+    /* Button states */
+    --button-active-bg: #0066cc;
+    --button-active-text: #ffffff;
+
+    /* Chart/plot styling */
+    --chart-grid-color: rgba(0, 102, 204, 0.15);
+
+    /* Additional useful variables */
+    --link-color: #0066cc;
+    --link-hover-color: #0052a3;
+    --success-color: #00a651;
+    --warning-color: #ff9500;
+    --error-color: #ff3b30;
+    --info-color: #5ac8fa;
+}
+
+/* --- Theme Transition Smoothing --- */
+/* Ensures smooth transitions when switching themes */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Apply transitions to commonly themed elements */
+.tab-bar,
+.modal-content,
+.chapter,
+.formula-item,
+.formula-equation {
+    transition: background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
 }

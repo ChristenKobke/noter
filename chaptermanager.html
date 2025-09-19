@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Manager - Physics Formula Collection</title>
+
+    <style>
+        /* Frosted Glass Design System */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cm-container {
+            width: 100%;
+            max-width: 1400px;
+            height: 90vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .cm-header {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cm-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .cm-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 0 30px;
+            background: rgba(248, 249, 250, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .cm-tab {
+            padding: 15px 25px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cm-tab:hover {
+            color: #333;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .cm-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .cm-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .cm-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .cm-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Import Section Styles */
+        .drop-zone {
+            border: 2px dashed #cbd5e0;
+            border-radius: 12px;
+            padding: 60px;
+            text-align: center;
+            background: rgba(247, 250, 252, 0.5);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .drop-zone.active {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .drop-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .file-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .file-item {
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .file-size {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+<div class="cm-container">
+    <!-- Header -->
+    <div class="cm-header">
+        <h1 class="cm-title">📚 Chapter Manager</h1>
+        <div class="cm-actions">
+            <span id="status-indicator" style="margin-right: 20px; color: #666;">Ready</span>
+            <button class="btn btn-secondary" onclick="window.close()">Close</button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="cm-tabs">
+        <button class="cm-tab active" data-tab="import">
+            <span>📥</span>
+            <span>Import</span>
+        </button>
+        <button class="cm-tab" data-tab="generate">
+            <span>🤖</span>
+            <span>Generate</span>
+        </button>
+        <button class="cm-tab" data-tab="edit">
+            <span>✏️</span>
+            <span>Edit</span>
+        </button>
+        <button class="cm-tab" data-tab="export">
+            <span>📤</span>
+            <span>Export</span>
+        </button>
+        <button class="cm-tab" data-tab="library">
+            <span>📖</span>
+            <span>Library</span>
+        </button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="cm-content">
+        <!-- Import Panel -->
+        <div class="cm-panel active" data-panel="import">
+            <h2 style="margin-bottom: 20px;">Import HTML Chapters</h2>
+
+            <div class="drop-zone" id="dropZone">
+                <span class="drop-icon">📁</span>
+                <h3>Drop HTML files here</h3>
+                <p style="color: #718096; margin: 10px 0;">or</p>
+                <button class="btn btn-primary">Browse Files</button>
+                <input type="file" id="fileInput" accept=".html,.htm" multiple style="display: none;">
+            </div>
+
+            <div class="file-list" id="fileList"></div>
+
+            <div id="importActions" style="margin-top: 20px; display: none;">
+                <button class="btn btn-primary" onclick="processImport()">Process & Import</button>
+                <button class="btn btn-secondary" onclick="clearImport()">Clear</button>
+            </div>
+        </div>
+
+        <!-- Generate Panel -->
+        <div class="cm-panel" data-panel="generate">
+            <h2 style="margin-bottom: 20px;">Generate Chapter with AI</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="margin-bottom: 15px;">Configuration</h3>
+
+                    <div class="form-group">
+                        <label>Chapter Topic</label>
+                        <input type="text" id="topicInput" placeholder="e.g., Quantum Mechanics, Thermodynamics">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subtopics (one per line)</label>
+                        <textarea id="subtopicsInput" placeholder="Wave-particle duality&#10;Schrödinger equation&#10;Quantum tunneling"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Complexity Level</label>
+                        <select id="complexitySelect">
+                            <option value="high-school">High School</option>
+                            <option value="undergraduate" selected>Undergraduate</option>
+                            <option value="graduate">Graduate</option>
+                            <option value="research">Research</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Include Elements</label>
+                        <div style="display: grid; gap: 10px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> Formulas & Equations
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> Example Problems
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox"> Interactive Plots
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> Quick Reference Tables
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>AI Model</label>
+                        <select id="aiModelSelect">
+                            <option value="gpt-4">GPT-4</option>
+                            <option value="gpt-3.5">GPT-3.5 Turbo</option>
+                            <option value="claude">Claude 3</option>
+                            <option value="local">Local Model</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>API Key</label>
+                        <input type="password" id="apiKeyInput" placeholder="Enter your API key">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="generateChapter()" style="width: 100%;">
+                        Generate Chapter
+                    </button>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 15px;">Preview</h3>
+                    <div id="generatePreview" style="
+                            background: white;
+                            border: 1px solid #e2e8f0;
+                            border-radius: 8px;
+                            padding: 20px;
+                            height: 500px;
+                            overflow-y: auto;
+                        ">
+                        <p style="color: #718096; text-align: center; margin-top: 50px;">
+                            Generated content will appear here...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="generateStatus" style="margin-top: 20px; padding: 15px; background: #f7fafc; border-radius: 8px; display: none;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div class="spinner" style="
+                            width: 20px;
+                            height: 20px;
+                            border: 2px solid #e2e8f0;
+                            border-top-color: #667eea;
+                            border-radius: 50%;
+                            animation: spin 1s linear infinite;
+                        "></div>
+                    <span id="generateStatusText">Generating chapter...</span>
+                </div>
+            </div>
+
+            @keyframes spin {
+            to { transform: rotate(360deg); }
+            }
+        </div>
+
+        <!-- Edit Panel -->
+        <div class="cm-panel" data-panel="edit">
+            <h2 style="margin-bottom: 20px;">Edit Chapter</h2>
+
+            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 20px; height: calc(100% - 60px);">
+                <!-- Chapter List -->
+                <div style="background: white; border-radius: 8px; padding: 15px; overflow-y: auto;">
+                    <h3 style="margin-bottom: 15px; font-size: 16px;">Available Chapters</h3>
+                    <div id="chapterList" style="display: grid; gap: 10px;">
+                        <!-- Chapters will be listed here -->
+                    </div>
+                </div>
+
+                <!-- Editor -->
+                <div style="background: white; border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <input type="text" id="chapterTitle" placeholder="Chapter Title" style="
+                                font-size: 20px;
+                                font-weight: 600;
+                                border: none;
+                                border-bottom: 2px solid #e2e8f0;
+                                padding: 5px 0;
+                                flex: 1;
+                                margin-right: 20px;
+                            ">
+                        <div style="display: flex; gap: 10px;">
+                            <button class="btn btn-secondary" onclick="togglePreview()">Preview</button>
+                            <button class="btn btn-primary" onclick="saveChapter()">Save</button>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="edit-tool" onclick="insertFormula()">∑ Formula</button>
+                        <button class="edit-tool" onclick="insertTable()">⊞ Table</button>
+                        <button class="edit-tool" onclick="insertExample()">📝 Example</button>
+                        <button class="edit-tool" onclick="insertSubsection()">§ Subsection</button>
+                        <button class="edit-tool" onclick="insertPlot()">📊 Plot</button>
+                    </div>
+
+                    <div id="editorContainer" style="position: relative;">
+                            <textarea id="chapterEditor" style="
+                                width: 100%;
+                                height: 400px;
+                                border: 1px solid #e2e8f0;
+                                border-radius: 8px;
+                                padding: 15px;
+                                font-family: 'Courier New', monospace;
+                                font-size: 14px;
+                                line-height: 1.6;
+                            " placeholder="Enter chapter content in HTML format..."></textarea>
+
+                        <div id="previewPane" style="
+                                display: none;
+                                width: 100%;
+                                height: 400px;
+                                border: 1px solid #e2e8f0;
+                                border-radius: 8px;
+                                padding: 15px;
+                                overflow-y: auto;
+                                background: #fafafa;
+                            "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .edit-tool {
+                padding: 8px 15px;
+                background: #f7fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 14px;
+                transition: all 0.3s ease;
+            }
+
+            .edit-tool:hover {
+                background: #667eea;
+                color: white;
+                border-color: #667eea;
+            }
+
+            .chapter-list-item {
+                padding: 10px;
+                background: #f7fafc;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .chapter-list-item:hover {
+                background: #667eea;
+                color: white;
+            }
+
+            .chapter-list-item.active {
+                background: #667eea;
+                color: white;
+            }
+        </style>
+
+        <!-- Export Panel -->
+        <div class="cm-panel" data-panel="export">
+            <h2 style="margin-bottom: 20px;">Export Chapters</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="margin-bottom: 15px;">Select Chapters to Export</h3>
+
+                    <div style="background: white; border-radius: 8px; padding: 15px; height: 300px; overflow-y: auto;">
+                        <div id="exportChapterList" style="display: grid; gap: 10px;">
+                            <!-- Chapters with checkboxes will appear here -->
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-secondary" onclick="selectAllChapters()" style="margin-right: 10px;">Select All</button>
+                        <button class="btn btn-secondary" onclick="deselectAllChapters()">Deselect All</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 style="margin-bottom: 15px;">Export Options</h3>
+
+                    <div class="form-group">
+                        <label>Export Format</label>
+                        <select id="exportFormat">
+                            <option value="individual">Individual HTML Files</option>
+                            <option value="combined">Combined HTML Document</option>
+                            <option value="zip">ZIP Archive</option>
+                            <option value="json">JSON Data</option>
+                            <option value="markdown">Markdown</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Include Assets</label>
+                        <div style="display: grid; gap: 10px; margin-top: 10px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> Include Styles
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox" checked> Include Scripts
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox"> Generate Index Page
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                                <input type="checkbox"> Minify Output
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>File Prefix</label>
+                        <input type="text" id="filePrefix" placeholder="chapter_" value="chapter_">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="exportChapters()" style="width: 100%; margin-top: 20px;">
+                        Export Selected Chapters
+                    </button>
+                </div>
+            </div>
+
+            <div id="exportStatus" style="margin-top: 30px; display: none;">
+                <h3 style="margin-bottom: 15px;">Export Progress</h3>
+                <div style="background: white; border-radius: 8px; padding: 20px;">
+                    <div style="width: 100%; height: 30px; background: #e2e8f0; border-radius: 15px; overflow: hidden;">
+                        <div id="exportProgressBar" style="height: 100%; background: #667eea; width: 0%; transition: width 0.3s ease;"></div>
+                    </div>
+                    <p id="exportStatusText" style="margin-top: 10px; text-align: center; color: #4a5568;">Preparing export...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Library Panel -->
+        <div class="cm-panel" data-panel="library">
+            <h2 style="margin-bottom: 20px;">Chapter Library</h2>
+
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="text" id="librarySearch" placeholder="Search chapters..." style="
+                            flex: 1;
+                            padding: 10px 15px;
+                            border: 1px solid #e2e8f0;
+                            border-radius: 8px;
+                        ">
+                    <select id="libraryFilter" style="
+                            padding: 10px 15px;
+                            border: 1px solid #e2e8f0;
+                            border-radius: 8px;
+                        ">
+                        <option value="all">All Chapters</option>
+                        <option value="imported">Imported</option>
+                        <option value="generated">Generated</option>
+                        <option value="edited">Edited</option>
+                    </select>
+                    <select id="librarySort" style="
+                            padding: 10px 15px;
+                            border: 1px solid #e2e8f0;
+                            border-radius: 8px;
+                        ">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="libraryGrid" style="
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                    gap: 20px;
+                    height: calc(100% - 100px);
+                    overflow-y: auto;
+                    padding: 10px 0;
+                ">
+                <!-- Chapter cards will appear here -->
+            </div>
+
+            <!-- Chapter Card Template -->
+            <template id="chapterCardTemplate">
+                <div class="chapter-card" style="
+                        background: white;
+                        border-radius: 10px;
+                        padding: 20px;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                        transition: all 0.3s ease;
+                        cursor: pointer;
+                    ">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                        <h3 style="font-size: 16px; margin: 0; flex: 1;">Chapter Title</h3>
+                        <span class="chapter-type" style="
+                                padding: 4px 8px;
+                                background: #667eea;
+                                color: white;
+                                border-radius: 4px;
+                                font-size: 12px;
+                            ">Type</span>
+                    </div>
+                    <p style="color: #718096; font-size: 14px; margin-bottom: 15px;">Chapter description...</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; color: #a0aec0;">Modified: Date</span>
+                        <div style="display: flex; gap: 5px;">
+                            <button class="card-action" title="Edit">✏️</button>
+                            <button class="card-action" title="Export">📤</button>
+                            <button class="card-action" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <style>
+                .chapter-card:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+                }
+
+                .card-action {
+                    background: transparent;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 16px;
+                    padding: 4px;
+                    border-radius: 4px;
+                    transition: all 0.2s ease;
+                }
+
+                .card-action:hover {
+                    background: #f7fafc;
+                }
+
+                .export-checkbox {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    padding: 10px;
+                    background: #f7fafc;
+                    border-radius: 6px;
+                    cursor: pointer;
+                }
+
+                .export-checkbox:hover {
+                    background: #e2e8f0;
+                }
+
+                .export-checkbox input[type="checkbox"] {
+                    cursor: pointer;
+                }
+            </style>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    // Chapter Manager Core System
+    class ChapterManager {
+        constructor() {
+            this.chapters = new Map();
+            this.currentChapter = null;
+            this.db = null;
+            this.initializeDB();
+            this.initializeUI();
+            this.loadChaptersFromStorage();
+        }
+
+        async initializeDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open('PhysicsChapterDB', 1);
+
+                request.onerror = () => reject(request.error);
+                request.onsuccess = () => {
+                    this.db = request.result;
+                    resolve();
+                };
+
+                request.onupgradeneeded = (event) => {
+                    const db = event.target.result;
+                    if (!db.objectStoreNames.contains('chapters')) {
+                        const store = db.createObjectStore('chapters', { keyPath: 'id' });
+                        store.createIndex('title', 'title', { unique: false });
+                        store.createIndex('created', 'created', { unique: false });
+                        store.createIndex('type', 'type', { unique: false });
+                    }
+                };
+            });
+        }
+
+        initializeUI() {
+            // Tab switching
+            document.querySelectorAll('.cm-tab').forEach(tab => {
+                tab.addEventListener('click', () => this.switchTab(tab.dataset.tab));
+            });
+
+            // File import
+            const dropZone = document.getElementById('dropZone');
+            const fileInput = document.getElementById('fileInput');
+
+            dropZone.addEventListener('click', () => fileInput.click());
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.classList.add('active');
+            });
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('active');
+            });
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('active');
+                this.handleFiles(e.dataTransfer.files);
+            });
+            fileInput.addEventListener('change', (e) => {
+                this.handleFiles(e.target.files);
+            });
+
+            // Search and filters
+            document.getElementById('librarySearch').addEventListener('input', (e) => {
+                this.filterLibrary(e.target.value);
+            });
+            document.getElementById('libraryFilter').addEventListener('change', () => {
+                this.updateLibraryDisplay();
+            });
+            document.getElementById('librarySort').addEventListener('change', () => {
+                this.updateLibraryDisplay();
+            });
+        }
+
+        switchTab(tabName) {
+            document.querySelectorAll('.cm-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.tab === tabName);
+            });
+            document.querySelectorAll('.cm-panel').forEach(panel => {
+                panel.classList.toggle('active', panel.dataset.panel === tabName);
+            });
+
+            // Load content when switching tabs
+            if (tabName === 'library') {
+                this.updateLibraryDisplay();
+            } else if (tabName === 'edit') {
+                this.loadChapterList();
+            } else if (tabName === 'export') {
+                this.loadExportList();
+            }
+        }
+
+        async handleFiles(files) {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+
+            for (let file of files) {
+                if (file.type === 'text/html' || file.name.endsWith('.html')) {
+                    const content = await this.readFile(file);
+                    const parsed = this.parseChapter(content, file.name);
+
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                            <div class="file-info">
+                                <span class="file-name">${file.name}</span>
+                                <span class="file-size">${(file.size / 1024).toFixed(2)} KB</span>
+                            </div>
+                            <button class="btn btn-secondary" onclick="manager.removeFile('${file.name}')">Remove</button>
+                        `;
+                    fileList.appendChild(fileItem);
+
+                    // Store temporarily for processing
+                    this.chapters.set(file.name, parsed);
+                }
+            }
+
+            if (fileList.children.length > 0) {
+                document.getElementById('importActions').style.display = 'block';
+            }
+        }
+
+        readFile(file) {
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.readAsText(file);
+            });
+        }
+
+        parseChapter(html, filename) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // Extract chapter structure
+            const chapter = {
+                id: 'ch_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                title: doc.querySelector('h2')?.textContent || filename.replace('.html', ''),
+                content: html,
+                subsections: [],
+                formulas: [],
+                created: new Date().toISOString(),
+                modified: new Date().toISOString(),
+                type: 'imported',
+                filename: filename
+            };
+
+            // Extract subsections
+            doc.querySelectorAll('.subsection').forEach(subsection => {
+                const title = subsection.querySelector('h3')?.textContent || '';
+                const content = subsection.querySelector('.subsection-content')?.innerHTML || '';
+                chapter.subsections.push({ title, content });
+            });
+
+            // Extract formulas
+            doc.querySelectorAll('.formula-equation').forEach(formula => {
+                chapter.formulas.push({
+                    latex: formula.dataset.latex || '',
+                    html: formula.innerHTML
+                });
+            });
+
+            return chapter;
+        }
+
+        async saveChapter(chapter) {
+            const transaction = this.db.transaction(['chapters'], 'readwrite');
+            const store = transaction.objectStore('chapters');
+            await store.put(chapter);
+            this.updateStatus('Chapter saved successfully');
+        }
+
+        async loadChaptersFromStorage() {
+            const transaction = this.db.transaction(['chapters'], 'readonly');
+            const store = transaction.objectStore('chapters');
+            const request = store.getAll();
+
+            request.onsuccess = () => {
+                request.result.forEach(chapter => {
+                    this.chapters.set(chapter.id, chapter);
+                });
+                this.updateLibraryDisplay();
+            };
+        }
+
+        updateLibraryDisplay() {
+            const grid = document.getElementById('libraryGrid');
+            const filter = document.getElementById('libraryFilter').value;
+            const sort = document.getElementById('librarySort').value;
+            const search = document.getElementById('librarySearch').value.toLowerCase();
+
+            let chapters = Array.from(this.chapters.values());
+
+            // Filter
+            if (filter !== 'all') {
+                chapters = chapters.filter(ch => ch.type === filter);
+            }
+
+            // Search
+            if (search) {
+                chapters = chapters.filter(ch =>
+                    ch.title.toLowerCase().includes(search) ||
+                    ch.content.toLowerCase().includes(search)
+                );
+            }
+
+            // Sort
+            chapters.sort((a, b) => {
+                switch(sort) {
+                    case 'date-desc':
+                        return new Date(b.created) - new Date(a.created);
+                    case 'date-asc':
+                        return new Date(a.created) - new Date(b.created);
+                    case 'name-asc':
+                        return a.title.localeCompare(b.title);
+                    case 'name-desc':
+                        return b.title.localeCompare(a.title);
+                }
+            });
+
+            // Display
+            grid.innerHTML = '';
+            chapters.forEach(chapter => {
+                const card = this.createChapterCard(chapter);
+                grid.appendChild(card);
+            });
+        }
+
+        createChapterCard(chapter) {
+            const card = document.createElement('div');
+            card.className = 'chapter-card';
+            card.style.cssText = `
+                    background: white;
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                `;
+
+            card.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
+                        <h3 style="font-size: 16px; margin: 0; flex: 1;">${chapter.title}</h3>
+                        <span class="chapter-type" style="
+                            padding: 4px 8px;
+                            background: ${chapter.type === 'generated' ? '#48bb78' : '#667eea'};
+                            color: white;
+                            border-radius: 4px;
+                            font-size: 12px;
+                        ">${chapter.type}</span>
+                    </div>
+                    <p style="color: #718096; font-size: 14px; margin-bottom: 15px;">
+                        ${chapter.subsections.length} subsections, ${chapter.formulas.length} formulas
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 12px; color: #a0aec0;">
+                            ${new Date(chapter.modified).toLocaleDateString()}
+                        </span>
+                        <div style="display: flex; gap: 5px;">
+                            <button class="card-action" onclick="manager.editChapter('${chapter.id}')" title="Edit">✏️</button>
+                            <button class="card-action" onclick="manager.exportSingleChapter('${chapter.id}')" title="Export">📤</button>
+                            <button class="card-action" onclick="manager.deleteChapter('${chapter.id}')" title="Delete">🗑️</button>
+                        </div>
+                    </div>
+                `;
+
+            return card;
+        }
+
+        updateStatus(message, type = 'info') {
+            const indicator = document.getElementById('status-indicator');
+            indicator.textContent = message;
+            indicator.style.color = type === 'error' ? '#f56565' : '#666';
+
+            setTimeout(() => {
+                indicator.textContent = 'Ready';
+                indicator.style.color = '#666';
+            }, 3000);
+        }
+
+        // Export functionality
+        async exportChapters() {
+            const format = document.getElementById('exportFormat').value;
+            const selected = Array.from(document.querySelectorAll('#exportChapterList input:checked'))
+                .map(cb => cb.value);
+
+            if (selected.length === 0) {
+                this.updateStatus('Please select chapters to export', 'error');
+                return;
+            }
+
+            const chapters = selected.map(id => this.chapters.get(id));
+
+            switch(format) {
+                case 'individual':
+                    chapters.forEach(ch => this.downloadHTML(ch));
+                    break;
+                case 'zip':
+                    await this.exportAsZip(chapters);
+                    break;
+                case 'json':
+                    this.downloadJSON(chapters);
+                    break;
+            }
+
+            this.updateStatus(`Exported ${selected.length} chapters`);
+        }
+
+        downloadHTML(chapter) {
+            const blob = new Blob([chapter.content], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${chapter.filename || chapter.title.replace(/\s+/g, '_')}.html`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        downloadJSON(chapters) {
+            const data = JSON.stringify(chapters, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'chapters_export.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    // Initialize manager
+    const manager = new ChapterManager();
+
+    // Global functions for onclick handlers
+    function processImport() {
+        const chapters = Array.from(manager.chapters.values());
+        chapters.forEach(chapter => {
+            manager.saveChapter(chapter);
+        });
+        manager.updateStatus(`Imported ${chapters.length} chapters`);
+        document.getElementById('fileList').innerHTML = '';
+        document.getElementById('importActions').style.display = 'none';
+    }
+
+    function clearImport() {
+        manager.chapters.clear();
+        document.getElementById('fileList').innerHTML = '';
+        document.getElementById('importActions').style.display = 'none';
+    }
+
+    function generateChapter() {
+        manager.updateStatus('Generating chapter... (demo mode)', 'info');
+        // AI generation would go here
+    }
+
+    function togglePreview() {
+        const editor = document.getElementById('chapterEditor');
+        const preview = document.getElementById('previewPane');
+
+        if (preview.style.display === 'none') {
+            preview.style.display = 'block';
+            editor.style.display = 'none';
+            preview.innerHTML = editor.value;
+        } else {
+            preview.style.display = 'none';
+            editor.style.display = 'block';
+        }
+    }
+
+    function saveChapter() {
+        const title = document.getElementById('chapterTitle').value;
+        const content = document.getElementById('chapterEditor').value;
+
+        if (manager.currentChapter) {
+            manager.currentChapter.title = title;
+            manager.currentChapter.content = content;
+            manager.currentChapter.modified = new Date().toISOString();
+            manager.saveChapter(manager.currentChapter);
+        }
+    }
+
+    function selectAllChapters() {
+        document.querySelectorAll('#exportChapterList input[type="checkbox"]').forEach(cb => {
+            cb.checked = true;
+        });
+    }
+
+    function deselectAllChapters() {
+        document.querySelectorAll('#exportChapterList input[type="checkbox"]').forEach(cb => {
+            cb.checked = false;
+        });
+    }
+
+    // Insert functions for editor
+    function insertFormula() {
+        const editor = document.getElementById('chapterEditor');
+        const formula = `<div class="formula-equation" data-latex="">
+    <math>
+        <!-- Enter MathML here -->
+    </math>
+</div>`;
+        editor.value += '\n' + formula + '\n';
+    }
+
+    function insertTable() {
+        const table = `<table class="equation-table">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Description</th>
+            <th>Units</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>`;
+        document.getElementById('chapterEditor').value += '\n' + table + '\n';
+    }
+
+    function insertSubsection() {
+        const subsection = `<div class="subsection">
+    <button class="subsection-header">
+        <h3>Subsection Title</h3>
+        <span class="toggle-icon"></span>
+    </button>
+    <div class="subsection-content">
+        <!-- Content here -->
+    </div>
+</div>`;
+        document.getElementById('chapterEditor').value += '\n' + subsection + '\n';
+    }
+
+    function insertExample() {
+        const example = `<div class="example-problem">
+    <h4>Example: Title</h4>
+    <div class="problem-statement">
+        Problem description...
+    </div>
+    <div class="solution">
+        <p><strong>Solution:</strong></p>
+        <p>Step-by-step solution...</p>
+    </div>
+</div>`;
+        document.getElementById('chapterEditor').value += '\n' + example + '\n';
+    }
+
+    function insertPlot() {
+        const plot = `<div class="interactive-plot" data-plot-id="unique-id">
+    <h4>Plot Title</h4>
+    <canvas id="plot-canvas" width="800" height="400"></canvas>
+</div>`;
+        document.getElementById('chapterEditor').value += '\n' + plot + '\n';
+    }
+</script>
+</body>
+</html>

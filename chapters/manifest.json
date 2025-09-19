@@ -1,0 +1,26 @@
+// File: chapters/manifest.json
+{
+  "version": "1.0",
+  "chapters": [
+    "kinematics.html",
+    "dynamics.html",
+    "simulations.html"
+  ],
+  "metadata": {
+    "kinematics.html": {
+      "title": "Kinematics - Complete Reference",
+      "order": 1,
+      "description": "Motion in 1D, 2D, and 3D with vectors"
+    },
+    "dynamics.html": {
+      "title": "Dynamics - Complete Reference",
+      "order": 2,
+      "description": "Forces, Newton's Laws, and momentum"
+    },
+    "simulations.html": {
+      "title": "Interactive Physics Simulator",
+      "order": 3,
+      "description": "Interactive simulations for all physics concepts"
+    }
+  }
+}

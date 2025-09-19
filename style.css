@@ -1,61 +1,10 @@
-could you edit the stylle.css file to make it fit ?Looking at your screenshot, I can see the issue clearly - the "Work-Energy Connection" subsection is cut off at the bottom. The table shows only partially, and "Chapter 5: Using Newton's Laws" appears immediately below without showing the rest of the Dynamics chapter content.
-                                                                                                                                                                                                                                                    The problem is that the fix I provided earlier isn't working because maxHeight is still being constrained. Let me provide a more robust solution by updating the toggle methods to remove the height constraint entirely for chapters with subsections:The issue is that the maxHeight calculation is still happening after a delay, which overrides the "none" value. The simpler solution I've provided now:
-1. Sets maxHeight: none for chapters with subsections (removing all height constraints)
-2. Removes the setTimeout callbacks that were recalculating and constraining the height
-3. Keeps normal maxHeight calculation for chapters without subsections
- However, there might also be an issue with the CSS. Let's also check if we need to update the CSS to ensure proper overflow handling. Could you add this to your style.css:
+/* ============================================= */
+/*          MAIN LAYOUT & COMPONENT STYLES       */
+/*          PART 1: LAYOUT, TABS, AND MODALS    */
+/* ============================================= */
+/* This file uses the color variables defined in themes.css */
 
-/* Fix for chapters with subsections */
-.chapter.active .chapter-content {
-    overflow: visible !important;
-}
-
-/* Ensure subsections don't have overflow issues */
-.subsection.active .subsection-content {
-    overflow: visible !important;
-}
-
-If this still doesn't work, the issue might be in how the content is structured in your HTML files. Make sure that in your dynamics.html file, you remove the <script> and <style> tags at the bottom (as they're now handled by the main application files).
-                                                                                                                                                                                                                                                            Try these changes and let me know if the issue persists. If it does, we may need to look at the actual HTML structure of your dynamics chapter to see if there's something else constraining the height.
-
-Looking at your CSS file, I can see the issue. The problem is with the transition and max-height properties for expanded content. Let me update the CSS to fix the cutting off issue:
-Fixed Physics Formula Collection CSS
-
-
-The key changes I made to fix the cutting off issue:
-
-Removed height constraints for active chapters:
-Added max-height: none !important when chapters are active
-                                  Added overflow: visible !important to ensure all content shows
-                                                                     Removed the transition when active for immediate display
-                                                                     Same fix for subsections:
-                                                                     Applied the same approach to subsection content
-                                                                     Ensures nested content isn't constrained
-Alternative animation approach:
-Added .animating class option if you want to keep smooth animations
-Uses a very large max-height (10000px for chapters, 5000px for subsections) instead of calculating exact heights
-
-                                                                            The main issue was that the CSS was using overflow: hidden with calculated max-height values, which could be incorrect for dynamic content with subsections. Now when a chapter or subsection is active, it completely removes the height constraint and shows all content.
-
-This should fix the cutting off issue you're experiencing with the Work-Energy Connection subsection and any other long content sections.
-
-make sure the main includes chapters in the directory that dont have subchapters too,
-
-Looking at your main.js file, I can see that the toggleChapter method already handles chapters both with and without subsections. The issue is that it's using a fixed max-height for chapters with subsections which might still cause cutoff. Let me update the JavaScript to better handle the expansion:
-Fixed Physics Formula Collection CSS
-Text
-
-Now let me also update the JavaScript to properly detect and handle chapters with subsections:
-Drafting artifact...
-
-
-
-    /* ============================================= */
-    /*          MAIN LAYOUT & COMPONENT STYLES       */
-    /* ============================================= */
-    /* This file uses the color variables defined in themes.css */
-
-    /* --- General Layout --- */
+/* --- General Layout --- */
 * {
     margin: 0;
     padding: 0;
@@ -65,12 +14,496 @@ Drafting artifact...
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background: var(--bg-main); /* THEME */
-    padding: 20px;
-    color: var(--text-primary); /* THEME */
+    background: var(--bg-main);
+    color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
 }
 
+/* --- Tab Bar Styles (Improved) --- */
+.tab-bar {
+    background: linear-gradient(to bottom, #f8f9fa, #f1f3f4);
+    border-bottom: 1px solid #d2d3d7;
+    display: flex;
+    align-items: center;
+    padding: 6px 8px 0;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.tabs-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 1px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    min-width: 180px;
+    max-width: 280px;
+    height: 36px;
+    background: #e8eaed;
+    border: 1px solid #dadce0;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 0 12px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    margin-bottom: -1px;
+}
+
+.tab.active {
+    background: white;
+    height: 39px;
+    z-index: 10;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tab:hover:not(.active) {
+    background: #f1f3f4;
+}
+
+.tab-title {
+    flex: 1;
+    font-weight: 400;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 2px 4px;
+    border-radius: 3px;
+    color: #5f6368;
+}
+
+.tab.active .tab-title {
+    color: #202124;
+    font-weight: 500;
+}
+
+.tab-title:focus {
+    border-color: #1a73e8;
+    background: rgba(26, 115, 232, 0.08);
+}
+
+.tab-folder {
+    font-size: 10px;
+    color: #80868b;
+    margin-left: 6px;
+    opacity: 0.8;
+}
+
+.tab-close {
+    background: none;
+    border: none;
+    font-size: 14px;
+    color: #5f6368;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 50%;
+    margin-left: 8px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.15s ease;
+}
+
+.tab:hover .tab-close,
+.tab.active .tab-close {
+    opacity: 0.7;
+}
+
+.tab-close:hover {
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.new-tab-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #5f6368;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.new-tab-btn:hover {
+    background: rgba(95, 99, 104, 0.08);
+    color: #202124;
+}
+
+/* --- Tab Content Area --- */
+.tab-content-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-main);
+}
+
+.tab-content {
+    display: none;
+    height: calc(100vh - 45px);
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--bg-main);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* --- Enhanced Modal Styles --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    width: 90%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e8eaed;
+    background: linear-gradient(to bottom, #ffffff, #fafafa);
+    border-radius: 12px 12px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #202124;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #5f6368;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: #202124;
+}
+
+.modal-body {
+    padding: 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e8eaed;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    background: #fafafa;
+    border-radius: 0 0 12px 12px;
+}
+
+/* --- Chapter Editor Section --- */
+.chapter-editor {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e8eaed;
+}
+
+.chapter-editor h4 {
+    margin: 0 0 16px 0;
+    color: #202124;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.chapter-list-editor {
+    background: #f8f9fa;
+    border: 1px solid #e8eaed;
+    border-radius: 8px;
+    padding: 12px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.chapter-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-bottom: 6px;
+    background: white;
+    border: 1px solid #e8eaed;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.chapter-item:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-item input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #202124;
+}
+
+.chapter-item input:focus {
+    outline: none;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.chapter-item .remove-chapter {
+    background: none;
+    border: none;
+    color: #ea4335;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: all 0.15s ease;
+}
+
+.chapter-item .remove-chapter:hover {
+    background: rgba(234, 67, 53, 0.1);
+}
+
+.add-chapter-btn,
+.scan-folder-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.add-chapter-btn {
+    background: #1a73e8;
+    color: white;
+}
+
+.add-chapter-btn:hover {
+    background: #1557b0;
+    box-shadow: 0 1px 3px rgba(26, 115, 232, 0.3);
+}
+
+.scan-folder-btn {
+    background: white;
+    color: #1a73e8;
+    border: 1px solid #1a73e8;
+}
+
+.scan-folder-btn:hover {
+    background: rgba(26, 115, 232, 0.05);
+}
+
+
+/* ============================================= */
+/*      PART 2: CHAPTERS, TOGGLE ICONS,         */
+/*      AND CONTENT ANIMATIONS                  */
+/* ============================================= */
+
+/* --- Folder Selection --- */
+.folder-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.folder-item {
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border: 2px solid #e8eaed;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.folder-item:hover {
+    border-color: #1a73e8;
+    background: rgba(26, 115, 232, 0.02);
+    transform: translateX(2px);
+}
+
+.folder-item.selected {
+    border-color: #1a73e8;
+    background: rgba(26, 115, 232, 0.08);
+    box-shadow: 0 2px 8px rgba(26, 115, 232, 0.15);
+}
+
+.folder-icon {
+    font-size: 24px;
+    margin-right: 14px;
+}
+
+.folder-info {
+    flex: 1;
+}
+
+.folder-name {
+    font-weight: 500;
+    color: #202124;
+    margin-bottom: 2px;
+    font-size: 14px;
+}
+
+.folder-desc {
+    font-size: 12px;
+    color: #5f6368;
+}
+
+.custom-folder {
+    border-top: 1px solid #e8eaed;
+    padding-top: 20px;
+}
+
+.custom-folder h4 {
+    margin: 0 0 12px 0;
+    color: #202124;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.custom-folder input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.custom-folder input:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+/* --- Button Styles --- */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-transform: none;
+}
+
+.btn-primary {
+    background: #1a73e8;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #1557b0;
+    box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+}
+
+.btn-primary:disabled {
+    background: #dadce0;
+    color: #80868b;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: white;
+    color: #5f6368;
+    border: 1px solid #dadce0;
+}
+
+.btn-secondary:hover {
+    background: #f8f9fa;
+    border-color: #5f6368;
+}
+
+/* --- Main Content Area --- */
 .formula-collection {
     max-width: 900px;
     margin: 0 auto;
@@ -78,17 +511,26 @@ body {
 
 /* --- Main Header & Controls --- */
 .main-header {
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
+    background: var(--header-bg);
+    color: var(--header-text);
     padding: 20px 30px;
     text-align: center;
-    border-bottom: 4px solid var(--header-accent); /* THEME */
+    border-bottom: 4px solid var(--header-accent);
     border-radius: 10px 10px 0 0;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     max-width: 900px;
 }
-.main-header h1 { font-size: 2.5em; font-weight: 300; margin-bottom: 10px; }
-.main-header .subtitle { font-size: 1.1em; opacity: 0.9; }
+
+.main-header h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.main-header .subtitle {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
 
 .header-controls {
     display: flex;
@@ -106,6 +548,7 @@ body {
     border-radius: 20px;
     padding: 4px;
 }
+
 .theme-btn {
     padding: 8px 16px;
     border: none;
@@ -116,13 +559,14 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
 }
+
 .theme-btn.active {
-    background: var(--bg-container); /* THEME */
-    color: var(--button-active-bg); /* THEME */
+    background: var(--bg-container);
+    color: var(--button-active-bg);
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* --- View Controls (Expand/Collapse All) --- */
+/* --- View Controls --- */
 .view-controls {
     display: flex;
     gap: 10px;
@@ -130,10 +574,10 @@ body {
 
 .control-btn {
     padding: 8px 15px;
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
+    background: rgba(0, 0, 0, 0.2);
     border: none;
     border-radius: 20px;
+    color: var(--header-text);
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9em;
@@ -141,33 +585,37 @@ body {
 }
 
 .control-btn:hover {
-    background: var(--header-accent); /* THEME */
+    background: rgba(0, 0, 0, 0.3);
     transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Search Bar --- */
 .search-container {
     flex-grow: 1;
-    text-align: right;
     position: relative;
-}
-#search-input {
-    width: 100%;
     max-width: 400px;
-    padding: 10px 15px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
     font-size: 1em;
     border-radius: 20px;
     border: 2px solid transparent;
     background-color: rgba(0, 0, 0, 0.2);
-    color: var(--header-text); /* THEME */
+    color: var(--header-text);
     transition: all 0.3s ease;
 }
-#search-input::placeholder { color: var(--header-text); opacity: 0.6; }
-#search-input:focus {
+
+.search-input::placeholder {
+    color: var(--header-text);
+    opacity: 0.6;
+}
+
+.search-input:focus {
     outline: none;
     background-color: rgba(0, 0, 0, 0.3);
-    border-color: var(--header-accent); /* THEME */
+    border-color: var(--header-accent);
 }
 
 .clear-search {
@@ -189,20 +637,59 @@ body {
     opacity: 1;
 }
 
+/* --- Chapter Navigation --- */
+.chapter-nav {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.chapter-nav-btn {
+    padding: 5px 12px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 15px;
+    color: var(--header-text);
+    cursor: pointer;
+    font-size: 0.9em;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.chapter-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-nav-btn.active {
+    background: var(--bg-container);
+    color: var(--button-active-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
 /* --- Chapter & Formula Styling --- */
 .chapter {
     margin-bottom: 20px;
-    border: 1px solid var(--border-color); /* THEME */
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    background: var(--bg-container); /* THEME */
-    box-shadow: 0 2px 5px var(--shadow-color); /* THEME */
+    background: var(--bg-container);
+    box-shadow: 0 2px 5px var(--shadow-color);
     transition: opacity 0.3s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
+/* --- Enhanced Chapter Header --- */
 .chapter-header {
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
+    background: var(--header-bg);
+    color: var(--header-text);
     padding: 15px 20px;
     cursor: pointer;
     display: flex;
@@ -212,68 +699,193 @@ body {
     border: none;
     text-align: left;
     font-size: 1em;
-    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition:
+            background-color 0.3s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
 }
-.chapter-header:hover { background: var(--header-accent); }
-.chapter-header h2 { font-size: 1.3em; font-weight: 400; }
-.toggle-icon { font-size: 1.5em; font-weight: bold; transition: transform 0.3s ease; }
-.chapter.active .toggle-icon { transform: rotate(45deg); }
 
-/* FIXED: Chapter content with proper expansion */
+.chapter-header:hover {
+    background: var(--header-accent);
+    transform: translateX(2px);
+    box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.chapter.active .chapter-header {
+    background: var(--header-accent);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.chapter-header h2 {
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+/* --- ENHANCED Toggle Icon Animation --- */
+.toggle-icon {
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: normal;
+    line-height: 1;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    position: relative;
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Create the + shape with pseudo-elements */
+.toggle-icon::before,
+.toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: currentColor;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
+}
+
+/* Horizontal line of the + */
+.toggle-icon::before {
+    width: 14px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Vertical line of the + */
+.toggle-icon::after {
+    width: 2px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+/* Chapter: rotate 45deg to form × */
+.chapter.active .chapter-header .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Subsection: rotate only 45deg keeping + shape */
+.subsection.active .subsection-header .toggle-icon {
+    transform: rotate(45deg);
+}
+
+/* Hover effects */
+.chapter-header:hover .toggle-icon,
+.subsection-header:hover .toggle-icon {
+    transform: scale(1.1);
+}
+
+.chapter.active .chapter-header:hover .toggle-icon {
+    transform: rotate(45deg) scale(1.1);
+}
+
+.subsection.active .subsection-header:hover .toggle-icon {
+    transform: rotate(45deg) scale(1.1);
+}
+
+/* --- ENHANCED Chapter Content Animation --- */
 .chapter-content {
     max-height: 0;
+    opacity: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    transform: translateY(-10px);
+    transition:
+            max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 20px;
+    will-change: max-height, opacity, transform;
 }
 
 .chapter.active .chapter-content {
-    max-height: none !important; /* Remove height constraint when active */
-    overflow: visible !important; /* Ensure all content is visible */
+    max-height: 5000px;
+    opacity: 1;
+    transform: translateY(0);
     padding: 20px;
     border-top: 1px solid var(--border-color);
 }
 
-/* For chapters without subsections, allow smooth animation */
-.chapter:not(.has-subsections).active .chapter-content {
-    max-height: 5000px; /* Large value for smooth animation */
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
-}
-
-/* For chapters with subsections, remove animation for proper display */
+/* For chapters with many subsections */
 .chapter.has-subsections.active .chapter-content {
-    max-height: none !important;
-    transition: none; /* No animation to prevent cutoff */
+    max-height: 10000px;
 }
 
-/* --- SUBSECTION STYLES --- */
+/* After animation completes */
+.chapter.expanded-complete .chapter-content {
+    overflow: visible;
+    max-height: none;
+    will-change: auto;
+}
+
+/* ============================================= */
+/*      PART 3: SUBSECTIONS, FORMS,             */
+/*      UI ELEMENTS AND UTILITIES               */
+/* ============================================= */
+
+/* --- Subsection Styles --- */
 .subsection-controls {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
     padding: 10px;
-    background: var(--item-bg); /* THEME */
+    background: var(--item-bg);
     border-radius: 5px;
     border: 1px solid var(--border-color);
+    opacity: 0;
+    animation: fadeInControls 0.5s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInControls {
+    to { opacity: 1; }
 }
 
 .subsection-controls .control-btn {
     padding: 6px 12px;
     font-size: 0.85em;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button hover animation */
+.subsection-controls .control-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.subsection-controls .control-btn:hover::after {
+    left: 100%;
 }
 
 .subsection {
     margin: 10px 0;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    background: var(--equation-bg); /* THEME */
+    background: var(--equation-bg);
     overflow: hidden;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
+/* --- Enhanced Subsection Header --- */
 .subsection-header {
     width: 100%;
     padding: 12px 15px;
-    background: linear-gradient(135deg, var(--item-bg) 0%, var(--equation-bg) 100%); /* THEME */
+    background: linear-gradient(135deg, var(--item-bg) 0%, var(--equation-bg) 100%);
     border: none;
     border-bottom: 1px solid var(--border-color);
     cursor: pointer;
@@ -281,69 +893,86 @@ body {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    transition: background 0.3s ease;
+    position: relative;
+    transition:
+            background 0.3s ease,
+            padding-left 0.2s ease,
+            box-shadow 0.2s ease;
 }
 
 .subsection-header:hover {
-    background: var(--item-bg); /* THEME */
+    background: var(--item-bg);
+    padding-left: 18px;
+    box-shadow: inset 3px 0 0 var(--item-border-accent);
+}
+
+.subsection.active .subsection-header {
+    background: var(--item-bg);
+    border-bottom: 2px solid var(--item-border-accent);
 }
 
 .subsection-header h3 {
     margin: 0;
-    color: var(--item-header-text); /* THEME */
+    color: var(--item-header-text);
     font-size: 1.1em;
     font-weight: 500;
 }
 
-/* FIXED: Subsection content with proper expansion */
+/* --- ENHANCED Subsection Content Animation --- */
 .subsection-content {
     max-height: 0;
+    opacity: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
+    transform: translateY(-5px);
+    transition:
+            max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 15px;
+    will-change: max-height, opacity, transform;
 }
 
 .subsection.active .subsection-content {
-    max-height: none !important; /* Remove height constraint when active */
-    overflow: visible !important; /* Ensure all content is visible */
+    max-height: 3000px;
+    opacity: 1;
+    transform: translateY(0);
     padding: 15px;
-    transition: none; /* Remove transition for immediate display */
 }
 
-/* Alternative: Use a very large max-height for animation if needed */
-.subsection.animating .subsection-content {
-    max-height: 5000px !important; /* Large enough for subsection content */
-    transition: max-height 0.5s ease-out;
+.subsection.expanded-complete .subsection-content {
+    overflow: visible;
+    max-height: none;
+    will-change: auto;
 }
 
-.subsection.active .toggle-icon {
-    transform: rotate(45deg);
-}
-
-.subsection .equation-table {
-    margin-top: 10px;
-}
-
-.subsection h4 {
-    color: var(--item-header-text); /* THEME */
-    margin: 15px 0 10px 0;
-    padding-bottom: 5px;
-    border-bottom: 1px solid var(--border-color);
-}
+/* --- Staggered Animation for Multiple Subsections --- */
+.expanding-all .subsection:nth-child(1) .subsection-content { transition-delay: 0s; }
+.expanding-all .subsection:nth-child(2) .subsection-content { transition-delay: 0.05s; }
+.expanding-all .subsection:nth-child(3) .subsection-content { transition-delay: 0.1s; }
+.expanding-all .subsection:nth-child(4) .subsection-content { transition-delay: 0.15s; }
+.expanding-all .subsection:nth-child(5) .subsection-content { transition-delay: 0.2s; }
+.expanding-all .subsection:nth-child(n+6) .subsection-content { transition-delay: 0.25s; }
 
 /* --- Formula Items --- */
 .formula-item {
     margin-bottom: 25px;
     padding: 20px;
-    background: var(--item-bg); /* THEME */
+    background: var(--item-bg);
     border-radius: 8px;
-    border-left: 4px solid var(--item-border-accent); /* THEME */
+    border-left: 4px solid var(--item-border-accent);
     transition: opacity 0.3s ease;
 }
-.formula-item h3 { color: var(--item-header-text); margin-bottom: 15px; font-size: 1.2em; font-weight: 500; }
+
+.formula-item h3 {
+    color: var(--item-header-text);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
 
 .formula-equation {
-    background: var(--equation-bg); /* THEME */
+    background: var(--equation-bg);
     border: 1px solid var(--border-color);
     border-radius: 5px;
     padding: 15px;
@@ -351,7 +980,7 @@ body {
     box-shadow: 0 1px 3px var(--equation-shadow);
     overflow-x: auto;
     text-align: center;
-    font-size: 1.1em; /* For MathML */
+    font-size: 1.1em;
     position: relative;
 }
 
@@ -359,7 +988,7 @@ body {
     position: absolute;
     top: 5px;
     right: 5px;
-    background: var(--item-bg); /* THEME */
+    background: var(--item-bg);
     border: 1px solid var(--border-color);
     color: var(--text-secondary);
     padding: 4px 8px;
@@ -370,9 +999,22 @@ body {
     visibility: hidden;
     transition: all 0.2s ease;
 }
-.formula-equation:hover .copy-btn { opacity: 1; visibility: visible; }
-.copy-btn:hover { background: var(--item-border-accent); }
-.copy-btn.copied { background-color: #4ec9b0; color: white; opacity: 1; visibility: visible; }
+
+.formula-equation:hover .copy-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.copy-btn:hover {
+    background: var(--item-border-accent);
+}
+
+.copy-btn.copied {
+    background-color: #4ec9b0;
+    color: white;
+    opacity: 1;
+    visibility: visible;
+}
 
 /* --- Tables --- */
 .equation-table {
@@ -386,8 +1028,8 @@ body {
 }
 
 .equation-table th {
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
+    background: var(--header-bg);
+    color: var(--header-text);
     padding: 8px;
     text-align: left;
     font-weight: 600;
@@ -399,191 +1041,9 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-.equation-table.compact td {
-    padding: 6px 8px;
-}
-
 .equation-table tr:last-child td {
     border-bottom: none;
 }
-
-.equation-table .formula-equation {
-    margin: 0;
-    padding: 5px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    display: inline-block;
-}
-
-/* --- Quick Reference Boxes --- */
-.quick-reference {
-    background: var(--item-bg); /* THEME */
-    border-left: 3px solid var(--item-border-accent);
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 5px;
-}
-
-.quick-reference h4 {
-    color: var(--item-header-text); /* THEME */
-    margin-bottom: 10px;
-    margin-top: 0;
-}
-
-/* --- Example Problems --- */
-.example-problem {
-    background: var(--equation-bg); /* THEME */
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 15px;
-    margin: 15px 0;
-}
-
-.example-problem h4 {
-    color: var(--item-header-text); /* THEME */
-    margin-top: 0;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.problem-statement {
-    background: var(--item-bg); /* THEME */
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
-
-.solution {
-    padding: 10px;
-}
-
-.solution p {
-    margin: 5px 0;
-}
-
-.answer {
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: 600;
-}
-
-/* --- Reference Card --- */
-.reference-card {
-    background: linear-gradient(135deg, var(--item-bg) 0%, var(--equation-bg) 100%);
-    border: 2px solid var(--item-border-accent);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 8px var(--shadow-color);
-}
-
-.reference-card h4 {
-    color: var(--item-header-text); /* THEME */
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.strategy-list, .mistakes-list {
-    margin: 10px 0 20px 20px;
-}
-
-.strategy-list li, .mistakes-list li {
-    margin: 8px 0;
-    line-height: 1.4;
-}
-
-/* --- Simulation Info Grid --- */
-.sim-info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.info-item {
-    background: var(--item-bg); /* THEME */
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    font-size: 0.9em;
-}
-
-.info-item span {
-    font-weight: 600;
-    color: var(--item-header-text); /* THEME */
-}
-
-/* --- Action Buttons --- */
-.action-btn {
-    padding: 8px 16px;
-    background: var(--header-bg); /* THEME */
-    color: var(--header-text); /* THEME */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.action-btn:hover {
-    background: var(--header-accent); /* THEME */
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-/* --- Search, Plot & Utility Styling --- */
-.highlight { background-color: var(--highlight-bg); color: var(--highlight-text); padding: 2px 4px; border-radius: 3px; }
-.no-results-message { text-align: center; padding: 40px; font-size: 1.2em; color: var(--text-secondary); background: var(--bg-container); border-radius: 8px; border: 1px solid var(--border-color); }
-.hidden { display: none; }
-.derivation {
-    background: var(--item-bg);
-    border-left: 3px solid var(--item-border-accent);
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 5px;
-}
-.derivation h4 { color: var(--item-header-text); margin-bottom: 10px; }
-.derivation .step { margin-left: 10px; padding: 4px 0; }
-
-/* --- Resizable Plot Window --- */
-.plot-window {
-    position: relative;
-    height: 350px;
-    min-height: 200px;
-    max-height: 80vh;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 10px;
-    background: var(--bg-container);
-}
-.resize-handle {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 10px;
-    cursor: ns-resize;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.resize-handle::after {
-    content: '...';
-    color: var(--border-color);
-    font-size: 20px;
-    line-height: 0;
-    letter-spacing: 2px;
-}
-
-/* --- Interactive Plot Styles --- */
-.interactive-plot { border-top: 2px solid var(--border-color); padding-top: 25px; }
-.plot-controls { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; padding: 15px; background: var(--bg-container); border-radius: 5px; border: 1px solid var(--border-color); }
-.control-group { display: flex; flex-direction: column; gap: 8px; }
-.control-group label { font-weight: 500; color: var(--item-header-text); font-size: 0.9em; }
-.control-group input[type="range"] { width: 160px; }
 
 /* --- Status Bar --- */
 .status-bar {
@@ -597,18 +1057,9 @@ body {
     align-items: center;
 }
 
-.status-action {
-    padding: 5px 10px;
-    background: var(--header-bg);
-    color: var(--header-text);
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 0.9em;
-}
-
-/* --- Error Container --- */
-.error-container {
+/* --- Error & Messages --- */
+.error-container,
+.no-results-message {
     text-align: center;
     padding: 40px;
     background: var(--bg-container);
@@ -616,27 +1067,200 @@ body {
     border-radius: 8px;
 }
 
-/* --- Responsive Design --- */
+.no-results-message {
+    font-size: 1.2em;
+    color: var(--text-secondary);
+}
+
+.chapter-error,
+.no-chapters-message,
+.partial-load-message {
+    margin: 10px 0;
+}
+
+/* --- Loading Overlay --- */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-main, rgba(255, 255, 255, 0.95));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.loading-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader {
+    text-align: center;
+}
+
+.loader-spinner {
+    border: 3px solid var(--border-color, #ddd);
+    border-top: 3px solid var(--header-accent, #006666);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Dev Footer --- */
+.dev-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+.dev-footer .metrics {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* --- Interactive Plot Styles --- */
+.interactive-plot {
+    border-top: 2px solid var(--border-color);
+    padding-top: 25px;
+}
+
+.plot-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: var(--bg-container);
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-weight: 500;
+    color: var(--item-header-text);
+    font-size: 0.9em;
+}
+
+.control-group input[type="range"] {
+    width: 160px;
+}
+
+.plot-window {
+    position: relative;
+    height: 350px;
+    min-height: 200px;
+    max-height: 80vh;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px;
+    background: var(--bg-container);
+}
+
+/* --- Visual Feedback for Bulk Operations --- */
+.bulk-expanding .chapter,
+.bulk-expanding .subsection {
+    animation: pulseExpand 0.3s ease;
+}
+
+.bulk-collapsing .chapter,
+.bulk-collapsing .subsection {
+    animation: pulseCollapse 0.3s ease;
+}
+
+@keyframes pulseExpand {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+@keyframes pulseCollapse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+/* --- Performance Optimizations --- */
+.chapter,
+.subsection,
+.toggle-icon,
+.chapter-content,
+.subsection-content {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.chapter.animating,
+.subsection.animating {
+    will-change: transform, opacity;
+}
+
+.chapter:not(.animating),
+.subsection:not(.animating) {
+    will-change: auto;
+}
+
+/* --- Highlight for search results --- */
+.highlight {
+    background-color: var(--highlight-bg);
+    color: var(--highlight-text);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* --- Hidden utility class --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Responsive Design Helpers --- */
 @media (max-width: 768px) {
     .header-controls {
         flex-direction: column;
-        gap: 10px;
+        align-items: stretch;
+    }
+
+    .search-container {
+        max-width: 100%;
     }
 
     .view-controls {
-        width: 100%;
         justify-content: center;
     }
 
-    .subsection-controls {
+    .chapter-nav {
+        padding: 5px;
+    }
+
+    .plot-controls {
         flex-direction: column;
     }
 
-    .subsection-controls .control-btn {
+    .control-group input[type="range"] {
         width: 100%;
-    }
-
-    .sim-info-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }

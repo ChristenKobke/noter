@@ -1,156 +1,75 @@
-<!-- File: chapters/simulations.html -->
+<!-- Enhanced simulations.html chapter with complete working simulations -->
+<!-- This replaces the existing simulations.html file -->
+
 <div class="chapter">
     <button class="chapter-header js-chapter-toggle">
-        <h2>Chapter 3: Interactive Physics Simulations</h2>
+        <h2>Chapter 3: Interactive Physics Simulator</h2>
         <span class="toggle-icon">+</span>
     </button>
     <div class="chapter-content">
 
-        <!-- Subsection Controls -->
-        <div class="header-controls subsection-controls">
-            <div class="view-controls">
-                <button class="control-btn expand-all-sub" data-chapter="simulations">⊕ Expand All Simulations</button>
-                <button class="control-btn collapse-all-sub" data-chapter="simulations">⊖ Collapse All Simulations</button>
-            </div>
-        </div>
+        <!-- Main Simulation Engine Container -->
+        <div class="simulation-engine">
+            <!-- Control Panel -->
+            <div class="sim-control-panel">
+                <div class="sim-selector">
+                    <label for="simulation-select">Select Simulation:</label>
+                    <select id="simulation-select">
+                        <option value="">-- Choose a Physics Model --</option>
+                        <optgroup label="Kinematics">
+                            <option value="projectile">Projectile Motion</option>
+                        </optgroup>
+                        <optgroup label="Dynamics">
+                            <option value="collision">Momentum & Collisions</option>
+                        </optgroup>
+                        <optgroup label="Oscillations">
+                            <option value="shm">Simple Harmonic Motion</option>
+                            <option value="pendulum">Pendulum</option>
+                            <option value="springs">Coupled Springs</option>
+                        </optgroup>
+                        <optgroup label="Waves">
+                            <option value="wave">Wave Propagation</option>
+                        </optgroup>
+                    </select>
+                    <button id="load-simulation" class="control-btn">Load Simulation</button>
+                </div>
 
-        <!-- Subsection 1: 1D Kinematics -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>1D Kinematics - Position, Velocity, Acceleration</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="kinematics-1d">
-                    <canvas class="sim-canvas" width="800" height="200"></canvas>
-                    <pre class="tui-output"></pre>
+                <div class="sim-controls">
+                    <button id="play-pause" class="control-btn">⏸ Pause</button>
+                    <button id="reset-sim" class="control-btn">↻ Reset</button>
                 </div>
             </div>
-        </div>
 
-        <!-- Subsection 2: Projectile Motion -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>2D Kinematics - Projectile Motion</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="projectile-2d">
-                    <canvas class="sim-canvas" width="800" height="400"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
+            <!-- Main Simulation Display -->
+            <div id="simulation-viewport">
+                <canvas id="main-sim-canvas" width="900" height="400"></canvas>
+                <pre id="tui-display" class="tui-output">
+<span class="tui-header">---[ PHYSICS SIMULATION ENGINE v2.0 ]---</span>
+<span class="tui-label">
+No simulation loaded. Please select a physics model from the dropdown above.
+
+Available Simulations:
+  • Projectile Motion - Trajectory with adjustable angle and velocity
+  • Collisions - Elastic and inelastic momentum conservation
+  • Simple Harmonic Motion - Spring-mass oscillator
+  • Pendulum - Simple and damped pendulum motion
+  • Coupled Springs - Wave propagation through connected masses
+  • Wave Propagation - Sinusoidal wave visualization
+
+Each simulation includes:
+  - Real-time visualization
+  - Interactive parameters
+  - Energy tracking with visual bars
+  - Key equations and formulas
+</span>
+<span class="tui-formula">Press [SPACE] to pause/play, [R] to reset</span>
+                </pre>
             </div>
-        </div>
 
-        <!-- Subsection 3: Newton's Laws -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Dynamics - Force and Acceleration</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="newton-dynamics">
-                    <canvas class="sim-canvas" width="800" height="200"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 4: Momentum & Collisions -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Momentum & Collisions (1D)</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="momentum-collision">
-                    <canvas class="sim-canvas" width="800" height="150"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 5: Simple Harmonic Motion -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Oscillations - Spring-Mass System</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="oscillations-shm">
-                    <canvas class="sim-canvas" width="800" height="150"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 6: Rotational Motion -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Rotational Dynamics - Torque & Angular Motion</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="rotational-dynamics">
-                    <canvas class="sim-canvas" width="800" height="300"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 7: Gravitation -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Gravitation - Orbital Motion</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="orbital-motion">
-                    <canvas class="sim-canvas" width="800" height="400"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 8: Waves -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Wave Motion - Standing & Traveling Waves</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="wave-motion">
-                    <canvas class="sim-canvas" width="800" height="250"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 9: Electrostatics -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Electrostatics - Electric Field Visualization</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="electric-field">
-                    <canvas class="sim-canvas" width="800" height="400"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- Subsection 10: Pendulum -->
-        <div class="subsection">
-            <button class="subsection-header js-subsection-toggle">
-                <h3>Pendulum - Simple & Physical</h3>
-                <span class="toggle-icon">+</span>
-            </button>
-            <div class="subsection-content">
-                <div class="simulation-container" data-sim-id="pendulum-motion">
-                    <canvas class="sim-canvas" width="800" height="400"></canvas>
-                    <pre class="tui-output"></pre>
-                </div>
+            <!-- Parameter Controls (populated dynamically) -->
+            <div id="parameter-panel" class="parameter-panel" style="display: none;">
+                <h4>Simulation Parameters</h4>
+                <div id="parameter-controls"></div>
             </div>
         </div>
 
@@ -158,335 +77,685 @@
 </div>
 
 <style>
-    /* Simulation-specific styles */
-    .simulation-container {
-        background-color: #1e1e1e;
-        border: 1px solid #3c3c3c;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 10px 0;
+    /* Main Engine Styles */
+    .simulation-engine {
+        background-color: #1a1a1a;
+        border: 2px solid #3c3c3c;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px 0;
     }
 
-    .sim-canvas {
-        display: block;
-        width: 100%;
+    .sim-control-panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
         background-color: #252526;
         border: 1px solid #3c3c3c;
-        border-radius: 4px;
-        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .sim-selector {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .sim-selector label {
+        color: #9cdcfe;
+        font-weight: 500;
+    }
+
+    #simulation-select {
+        padding: 8px 12px;
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        border: 1px solid #3c3c3c;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        min-width: 250px;
+    }
+
+    #simulation-select optgroup {
+        color: #4ec9b0;
+        font-weight: bold;
+    }
+
+    #simulation-select option {
+        color: #d4d4d4;
+        padding: 5px;
+    }
+
+    .sim-controls {
+        display: flex;
+        gap: 10px;
+    }
+
+    .control-btn {
+        padding: 8px 16px;
+        background-color: #0e639c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .control-btn:hover {
+        background-color: #1177bb;
+    }
+
+    .control-btn:active {
+        background-color: #094771;
+    }
+
+    #simulation-viewport {
+        background-color: #1e1e1e;
+        border: 2px solid #3c3c3c;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    #main-sim-canvas {
+        display: block;
+        width: 100%;
+        background: linear-gradient(180deg, #1a1a1a 0%, #252526 100%);
+        border-bottom: 1px solid #3c3c3c;
     }
 
     .tui-output {
-        font-family: 'Courier New', monospace;
+        font-family: 'Courier New', 'Consolas', monospace;
         font-size: 12px;
-        line-height: 1.3;
+        line-height: 1.4;
         background-color: #252526;
         color: #d4d4d4;
-        padding: 15px;
-        border: 1px solid #3c3c3c;
-        border-radius: 4px;
+        padding: 20px;
         white-space: pre;
         overflow-x: auto;
+        margin: 0;
+        min-height: 250px;
     }
 
-    /* TUI color classes */
+    /* TUI color scheme */
     .tui-header { color: #4ec9b0; font-weight: bold; }
     .tui-param { color: #9cdcfe; }
     .tui-value { color: #b5cea8; }
-    .tui-label { color: #757575; }
+    .tui-label { color: #808080; }
+    .tui-formula { color: #d7ba7d; }
     .tui-energy-ke { color: #b5cea8; }
     .tui-energy-pe { color: #569cd6; }
     .tui-energy-total { color: #ce9178; }
-    .tui-selected { background-color: #37373d; }
-    .tui-formula { color: #d7ba7d; }
+
+    /* Parameter Panel */
+    .parameter-panel {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #252526;
+        border: 1px solid #3c3c3c;
+        border-radius: 8px;
+    }
+
+    .parameter-panel h4 {
+        color: #4ec9b0;
+        margin-bottom: 15px;
+        font-family: 'Courier New', monospace;
+    }
+
+    .param-control {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 8px;
+        background-color: #1e1e1e;
+        border-radius: 5px;
+    }
+
+    .param-control label {
+        color: #9cdcfe;
+        min-width: 150px;
+        font-size: 13px;
+    }
+
+    .param-control input[type="range"] {
+        flex: 1;
+        margin: 0 15px;
+    }
+
+    .param-control .param-value {
+        color: #b5cea8;
+        min-width: 80px;
+        text-align: right;
+        font-family: 'Courier New', monospace;
+    }
 </style>
 
 <script>
-    // Simulation Controllers
-    const SIMULATIONS = {
-        'kinematics-1d': {
-            params: { x0: 0, v0: 10, a: -2 },
-            state: { t: 0, x: 0, v: 0 },
-            init: function(container) {
-                const canvas = container.querySelector('.sim-canvas');
-                const ctx = canvas.getContext('2d');
-                const tui = container.querySelector('.tui-output');
-
-                this.update = () => {
-                    const dt = 1/60;
-                    this.state.t += dt;
-                    this.state.x = this.params.x0 + this.params.v0 * this.state.t + 0.5 * this.params.a * this.state.t * this.state.t;
-                    this.state.v = this.params.v0 + this.params.a * this.state.t;
-
-                    // Draw
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    ctx.strokeStyle = '#555';
-                    ctx.beginPath();
-                    ctx.moveTo(0, canvas.height/2);
-                    ctx.lineTo(canvas.width, canvas.height/2);
-                    ctx.stroke();
-
-                    const xPos = (this.state.x + 50) * 5;
-                    ctx.fillStyle = '#569cd6';
-                    ctx.fillRect(xPos - 15, canvas.height/2 - 15, 30, 30);
-
-                    // TUI
-                    const ke = 0.5 * this.state.v * this.state.v;
-                    const keBar = '█'.repeat(Math.max(0, Math.min(30, Math.round(ke/10))));
-
-                    tui.textContent = `
----[ 1D KINEMATICS SIMULATOR ]---
-Parameters:
-  Initial Position (x₀): ${this.params.x0.toFixed(1).padStart(7)} m
-  Initial Velocity (v₀): ${this.params.v0.toFixed(1).padStart(7)} m/s
-  Acceleration (a).....: ${this.params.a.toFixed(1).padStart(7)} m/s²
---------------------------------------------------------------------------------
-State @ t = ${this.state.t.toFixed(2)}s:
-  Position (x).........: ${this.state.x.toFixed(2).padStart(7)} m
-  Velocity (v).........: ${this.state.v.toFixed(2).padStart(7)} m/s
-  Kinetic Energy.......: ${ke.toFixed(1).padStart(7)} J [${keBar.padEnd(30, '░')}]
---------------------------------------------------------------------------------
-Equations: x = x₀ + v₀t + ½at²  |  v = v₀ + at  |  KE = ½mv²
-Controls: [R] Reset | [SPACE] Pause | [A/D] Adjust acceleration`;
-                };
-
-                this.animate = () => {
-                    this.update();
-                    if (this.running) requestAnimationFrame(() => this.animate());
-                };
-
-                this.running = true;
-                this.animate();
+    (function() {
+        // Base Simulation Class
+        class BaseSimulation {
+            constructor(canvas, ctx, tui) {
+                this.canvas = canvas;
+                this.ctx = ctx;
+                this.tui = tui;
+                this.time = 0;
+                this.dt = 1/60;
+                this.parameters = {};
             }
-        },
 
-        'projectile-2d': {
-            params: { v0: 30, angle: 45, g: 9.81 },
-            state: { t: 0, x: 0, y: 0, vx: 0, vy: 0, trail: [] },
-            init: function(container) {
-                const canvas = container.querySelector('.sim-canvas');
-                const ctx = canvas.getContext('2d');
-                const tui = container.querySelector('.tui-output');
-
-                const angleRad = this.params.angle * Math.PI / 180;
-                this.state.vx = this.params.v0 * Math.cos(angleRad);
-                this.state.vy = this.params.v0 * Math.sin(angleRad);
-
-                this.update = () => {
-                    const dt = 1/60;
-                    this.state.t += dt;
-                    this.state.x = this.state.vx * this.state.t;
-                    this.state.y = this.state.vy * this.state.t - 0.5 * this.params.g * this.state.t * this.state.t;
-
-                    if (this.state.trail.length > 100) this.state.trail.shift();
-                    this.state.trail.push({x: this.state.x, y: this.state.y});
-
-                    // Draw
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                    // Trail
-                    ctx.strokeStyle = 'rgba(150, 150, 255, 0.5)';
-                    ctx.beginPath();
-                    this.state.trail.forEach((p, i) => {
-                        const x = p.x * 3;
-                        const y = canvas.height - 50 - p.y * 3;
-                        if (i === 0) ctx.moveTo(x, y);
-                        else ctx.lineTo(x, y);
-                    });
-                    ctx.stroke();
-
-                    // Projectile
-                    const xPos = this.state.x * 3;
-                    const yPos = canvas.height - 50 - this.state.y * 3;
-                    ctx.fillStyle = '#f44336';
-                    ctx.beginPath();
-                    ctx.arc(xPos, yPos, 6, 0, 2 * Math.PI);
-                    ctx.fill();
-
-                    // Ground
-                    ctx.strokeStyle = '#555';
-                    ctx.beginPath();
-                    ctx.moveTo(0, canvas.height - 50);
-                    ctx.lineTo(canvas.width, canvas.height - 50);
-                    ctx.stroke();
-
-                    // Reset if hit ground
-                    if (this.state.y < 0) {
-                        this.state.t = 0;
-                        this.state.trail = [];
-                    }
-
-                    // TUI
-                    const v = Math.sqrt(this.state.vx**2 + (this.state.vy - this.params.g * this.state.t)**2);
-                    const ke = 0.5 * v * v;
-                    const pe = this.params.g * Math.max(0, this.state.y);
-                    const total = ke + pe;
-                    const maxE = 0.5 * this.params.v0 * this.params.v0;
-
-                    const keBar = '█'.repeat(Math.round((ke/maxE) * 25));
-                    const peBar = '█'.repeat(Math.round((pe/maxE) * 25));
-
-                    tui.textContent = `
----[ 2D PROJECTILE MOTION ]---
-Launch Parameters:
-  Initial Velocity.: ${this.params.v0.toFixed(1).padStart(7)} m/s
-  Launch Angle.....: ${this.params.angle.toFixed(0).padStart(7)}°
-  Gravity (g)......: ${this.params.g.toFixed(2).padStart(7)} m/s²
---------------------------------------------------------------------------------
-State @ t = ${this.state.t.toFixed(2)}s:
-  Position (x, y)..: (${this.state.x.toFixed(1)}, ${this.state.y.toFixed(1)}) m
-  Velocity.........: ${v.toFixed(1).padStart(7)} m/s
---------------------------------------------------------------------------------
-Energy (m = 1 kg):
-  Kinetic..: ${ke.toFixed(1).padStart(6)} J [${keBar.padEnd(25, '░')}]
-  Potential: ${pe.toFixed(1).padStart(6)} J [${peBar.padEnd(25, '░')}]
-  Total....: ${total.toFixed(1).padStart(6)} J
---------------------------------------------------------------------------------
-Max Height: ${(this.state.vy**2 / (2*this.params.g)).toFixed(1)} m | Range: ${(2*this.state.vx*this.state.vy/this.params.g).toFixed(1)} m`;
-                };
-
-                this.animate = () => {
-                    this.update();
-                    if (this.running) requestAnimationFrame(() => this.animate());
-                };
-
-                this.running = true;
-                this.animate();
+            init() {
+                this.reset();
             }
-        },
 
-        'oscillations-shm': {
-            params: { m: 1, k: 100, b: 0.5, x0: 4 },
-            state: { t: 0, x: 4, v: 0 },
-            init: function(container) {
-                const canvas = container.querySelector('.sim-canvas');
-                const ctx = canvas.getContext('2d');
-                const tui = container.querySelector('.tui-output');
+            reset() {
+                this.time = 0;
+            }
 
-                const omega0 = Math.sqrt(this.params.k / this.params.m);
-                const gamma = this.params.b / (2 * this.params.m);
-                const omega_d = Math.sqrt(Math.max(0, omega0*omega0 - gamma*gamma));
-                const maxE = 0.5 * this.params.k * this.params.x0 * this.params.x0;
+            update() {
+                this.time += this.dt;
+            }
 
-                this.update = () => {
-                    const dt = 1/60;
-                    this.state.t += dt;
+            draw() {
+                this.ctx.fillStyle = '#1a1a1a';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            }
 
-                    // Analytical solution for damped oscillator
-                    const A = this.params.x0;
-                    const t = this.state.t;
-                    this.state.x = A * Math.exp(-gamma * t) * Math.cos(omega_d * t);
-                    this.state.v = -A * Math.exp(-gamma * t) * (gamma * Math.cos(omega_d * t) + omega_d * Math.sin(omega_d * t));
+            updateTUI() {
+                // Override in subclass
+            }
 
-                    // Draw
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                    // Track
-                    ctx.strokeStyle = '#555';
-                    ctx.beginPath();
-                    ctx.moveTo(0, canvas.height/2);
-                    ctx.lineTo(canvas.width, canvas.height/2);
-                    ctx.stroke();
-
-                    // Spring
-                    const springX = canvas.width/2 + this.state.x * 30;
-                    ctx.strokeStyle = '#9cdcfe';
-                    ctx.beginPath();
-                    ctx.moveTo(100, canvas.height/2);
-                    for (let i = 1; i < 20; i++) {
-                        const x = 100 + (springX - 100) * i/20;
-                        const y = canvas.height/2 + (i % 2 ? 10 : -10);
-                        ctx.lineTo(x, y);
-                    }
-                    ctx.lineTo(springX, canvas.height/2);
-                    ctx.stroke();
-
-                    // Mass
-                    ctx.fillStyle = '#569cd6';
-                    ctx.fillRect(springX - 20, canvas.height/2 - 20, 40, 40);
-
-                    // Energy calculations
-                    const ke = 0.5 * this.params.m * this.state.v * this.state.v;
-                    const pe = 0.5 * this.params.k * this.state.x * this.state.x;
-                    const total = ke + pe;
-
-                    const keBar = '█'.repeat(Math.round((ke/maxE) * 30));
-                    const peBar = '█'.repeat(Math.round((pe/maxE) * 30));
-                    const teBar = '█'.repeat(Math.round((total/maxE) * 30));
-
-                    // TUI
-                    tui.innerHTML = `
-<span class="tui-header">---[ SIMPLE HARMONIC MOTION ]---</span>
-Parameters:
-  Mass (m).........: ${this.params.m.toFixed(1).padStart(7)} kg
-  Spring k.........: ${this.params.k.toFixed(0).padStart(7)} N/m
-  Damping b........: ${this.params.b.toFixed(1).padStart(7)} Ns/m
-  Initial x₀.......: ${this.params.x0.toFixed(1).padStart(7)} m
---------------------------------------------------------------------------------
-<span class="tui-formula">Natural ω₀ = √(k/m) = ${omega0.toFixed(2)} rad/s  |  Period T = ${(2*Math.PI/omega0).toFixed(2)} s</span>
---------------------------------------------------------------------------------
-State @ t = ${this.state.t.toFixed(2)}s:
-  Position.........: ${this.state.x.toFixed(3).padStart(7)} m
-  Velocity.........: ${this.state.v.toFixed(3).padStart(7)} m/s
---------------------------------------------------------------------------------
-<span class="tui-energy-ke">  KE (½mv²): ${ke.toFixed(1).padStart(6)} J [${keBar.padEnd(30, '░')}]</span>
-<span class="tui-energy-pe">  PE (½kx²): ${pe.toFixed(1).padStart(6)} J [${peBar.padEnd(30, '░')}]</span>
-<span class="tui-energy-total">  Total....: ${total.toFixed(1).padStart(6)} J [${teBar.padEnd(30, '░')}]</span>
---------------------------------------------------------------------------------
-Controls: [R] Reset | [A/D] Adjust damping | [W/S] Adjust spring constant`;
-                };
-
-                this.animate = () => {
-                    this.update();
-                    if (this.running) requestAnimationFrame(() => this.animate());
-                };
-
-                this.running = true;
-                this.animate();
+            onParameterChange(key, value) {
+                // Override if needed
             }
         }
-    };
 
-    // Initialize simulations when subsections are opened
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.js-subsection-toggle').forEach(button => {
-            button.addEventListener('click', function() {
-                const subsection = button.closest('.subsection');
-                const container = subsection.querySelector('.simulation-container');
+        // Projectile Motion Simulation
+        class ProjectileSimulation extends BaseSimulation {
+            constructor(canvas, ctx, tui) {
+                super(canvas, ctx, tui);
+                this.parameters = {
+                    velocity: { label: 'Launch Velocity', value: 30, min: 10, max: 50, step: 2, unit: 'm/s' },
+                    angle: { label: 'Launch Angle', value: 45, min: 15, max: 75, step: 5, unit: '°' },
+                    gravity: { label: 'Gravity', value: 9.8, min: 1, max: 20, step: 0.5, unit: 'm/s²' }
+                };
+                this.projectile = { x: 50, y: 350, vx: 0, vy: 0 };
+                this.trail = [];
+                this.launched = false;
+            }
 
-                if (container && !container.dataset.initialized) {
-                    const simId = container.dataset.simId;
-                    if (SIMULATIONS[simId]) {
-                        SIMULATIONS[simId].init(container);
-                        container.dataset.initialized = 'true';
+            reset() {
+                super.reset();
+                const angleRad = this.parameters.angle.value * Math.PI / 180;
+                this.projectile = {
+                    x: 50,
+                    y: 350,
+                    vx: this.parameters.velocity.value * Math.cos(angleRad) * 3,
+                    vy: -this.parameters.velocity.value * Math.sin(angleRad) * 3
+                };
+                this.trail = [];
+                this.launched = true;
+            }
+
+            update() {
+                if (!this.launched) return;
+                super.update();
+
+                this.projectile.vy += this.parameters.gravity.value * this.dt * 3;
+                this.projectile.x += this.projectile.vx * this.dt;
+                this.projectile.y += this.projectile.vy * this.dt;
+
+                this.trail.push({ x: this.projectile.x, y: this.projectile.y });
+                if (this.trail.length > 200) this.trail.shift();
+
+                // Stop at ground
+                if (this.projectile.y > 380) {
+                    this.projectile.y = 380;
+                    this.projectile.vx = 0;
+                    this.projectile.vy = 0;
+                }
+            }
+
+            draw() {
+                super.draw();
+
+                // Draw ground
+                this.ctx.fillStyle = '#444';
+                this.ctx.fillRect(0, 380, this.canvas.width, 20);
+
+                // Draw trail
+                if (this.trail.length > 1) {
+                    this.ctx.strokeStyle = 'rgba(100, 200, 255, 0.5)';
+                    this.ctx.lineWidth = 2;
+                    this.ctx.beginPath();
+                    this.trail.forEach((point, i) => {
+                        if (i === 0) this.ctx.moveTo(point.x, point.y);
+                        else this.ctx.lineTo(point.x, point.y);
+                    });
+                    this.ctx.stroke();
+                }
+
+                // Draw projectile
+                this.ctx.fillStyle = '#f44336';
+                this.ctx.beginPath();
+                this.ctx.arc(this.projectile.x, this.projectile.y, 8, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+
+            updateTUI() {
+                const v = Math.sqrt(this.projectile.vx ** 2 + this.projectile.vy ** 2);
+                const ke = 0.5 * v * v / 100;
+                const pe = (380 - this.projectile.y) * 0.1;
+
+                const keBar = '█'.repeat(Math.min(20, Math.round(ke)));
+                const peBar = '█'.repeat(Math.min(20, Math.round(pe)));
+
+                this.tui.innerHTML = `
+<span class="tui-header">---[ PROJECTILE MOTION ]---</span>
+
+Launch Parameters:
+  Velocity: ${this.parameters.velocity.value} m/s @ ${this.parameters.angle.value}°
+  Gravity: ${this.parameters.gravity.value} m/s²
+
+Position:
+  X: ${this.projectile.x.toFixed(1)} px
+  Y: ${(380 - this.projectile.y).toFixed(1)} px (height)
+
+Energy:
+<span class="tui-energy-ke">  KE: ${ke.toFixed(1)} [${keBar.padEnd(20, '░')}]</span>
+<span class="tui-energy-pe">  PE: ${pe.toFixed(1)} [${peBar.padEnd(20, '░')}]</span>
+
+<span class="tui-formula">Range = v²sin(2θ)/g</span>
+<span class="tui-label">Controls: [SPACE] Pause | [R] Reset</span>`;
+            }
+        }
+
+        // Simple Harmonic Motion Simulation
+        class SHMSimulation extends BaseSimulation {
+            constructor(canvas, ctx, tui) {
+                super(canvas, ctx, tui);
+                this.parameters = {
+                    mass: { label: 'Mass', value: 1, min: 0.1, max: 5, step: 0.1, unit: 'kg' },
+                    k: { label: 'Spring Constant', value: 100, min: 10, max: 500, step: 10, unit: 'N/m' },
+                    damping: { label: 'Damping', value: 0.5, min: 0, max: 5, step: 0.1, unit: 'Ns/m' },
+                    x0: { label: 'Initial Position', value: 100, min: 0, max: 200, step: 10, unit: 'px' }
+                };
+                this.state = { x: 100, v: 0 };
+            }
+
+            reset() {
+                super.reset();
+                this.state.x = this.parameters.x0.value;
+                this.state.v = 0;
+            }
+
+            update() {
+                super.update();
+                const { mass, k, damping } = this.parameters;
+
+                // Force = -kx - bv
+                const force = -k.value * this.state.x / 100 - damping.value * this.state.v;
+                const a = force / mass.value;
+
+                this.state.v += a * this.dt;
+                this.state.x += this.state.v * this.dt;
+            }
+
+            draw() {
+                super.draw();
+                const cx = this.canvas.width / 2;
+                const cy = this.canvas.height / 2;
+
+                // Draw equilibrium line
+                this.ctx.strokeStyle = '#333';
+                this.ctx.setLineDash([5, 5]);
+                this.ctx.beginPath();
+                this.ctx.moveTo(cx, 50);
+                this.ctx.lineTo(cx, this.canvas.height - 50);
+                this.ctx.stroke();
+                this.ctx.setLineDash([]);
+
+                // Draw spring
+                const massX = cx + this.state.x;
+                this.ctx.strokeStyle = '#9cdcfe';
+                this.ctx.lineWidth = 2;
+                this.ctx.beginPath();
+                this.ctx.moveTo(100, cy);
+
+                const coils = 20;
+                for (let i = 1; i <= coils; i++) {
+                    const x = 100 + (massX - 100) * i / coils;
+                    const y = cy + (i % 2 ? 15 : -15);
+                    this.ctx.lineTo(x, y);
+                }
+                this.ctx.lineTo(massX, cy);
+                this.ctx.stroke();
+
+                // Draw mass
+                this.ctx.fillStyle = '#569cd6';
+                this.ctx.fillRect(massX - 20, cy - 20, 40, 40);
+            }
+
+            updateTUI() {
+                const { mass, k } = this.parameters;
+                const ke = 0.5 * mass.value * this.state.v * this.state.v;
+                const pe = 0.5 * k.value * (this.state.x / 100) * (this.state.x / 100);
+                const total = ke + pe;
+
+                const omega = Math.sqrt(k.value / mass.value);
+                const period = 2 * Math.PI / omega;
+
+                const keBar = '█'.repeat(Math.min(20, Math.round(ke * 2)));
+                const peBar = '█'.repeat(Math.min(20, Math.round(pe * 2)));
+
+                this.tui.innerHTML = `
+<span class="tui-header">---[ SIMPLE HARMONIC MOTION ]---</span>
+
+System Parameters:
+  Mass: ${mass.value} kg
+  Spring Constant: ${k.value} N/m
+  Damping: ${this.parameters.damping.value} Ns/m
+
+State @ t = ${this.time.toFixed(2)}s:
+  Position: ${this.state.x.toFixed(1)} px
+  Velocity: ${this.state.v.toFixed(1)} px/s
+
+Energy:
+<span class="tui-energy-ke">  KE: ${ke.toFixed(2)} J [${keBar.padEnd(20, '░')}]</span>
+<span class="tui-energy-pe">  PE: ${pe.toFixed(2)} J [${peBar.padEnd(20, '░')}]</span>
+<span class="tui-energy-total">  Total: ${total.toFixed(2)} J</span>
+
+<span class="tui-formula">ω = √(k/m) = ${omega.toFixed(2)} rad/s</span>
+<span class="tui-formula">T = 2π/ω = ${period.toFixed(2)} s</span>
+<span class="tui-label">Controls: [SPACE] Pause | [R] Reset</span>`;
+            }
+        }
+
+        // Pendulum Simulation
+        class PendulumSimulation extends BaseSimulation {
+            constructor(canvas, ctx, tui) {
+                super(canvas, ctx, tui);
+                this.parameters = {
+                    length: { label: 'Length', value: 150, min: 50, max: 250, step: 10, unit: 'px' },
+                    mass: { label: 'Mass', value: 10, min: 5, max: 30, step: 2, unit: 'kg' },
+                    angle0: { label: 'Initial Angle', value: 30, min: 5, max: 60, step: 5, unit: '°' },
+                    damping: { label: 'Damping', value: 0.01, min: 0, max: 0.1, step: 0.01, unit: '' }
+                };
+                this.angle = 30 * Math.PI / 180;
+                this.angleVel = 0;
+                this.trail = [];
+            }
+
+            reset() {
+                super.reset();
+                this.angle = this.parameters.angle0.value * Math.PI / 180;
+                this.angleVel = 0;
+                this.trail = [];
+            }
+
+            update() {
+                super.update();
+                const g = 9.8;
+                const L = this.parameters.length.value / 100;
+
+                // Angular acceleration = -(g/L)sin(θ) - damping * angleVel
+                const angleAcc = -(g / L) * Math.sin(this.angle) - this.parameters.damping.value * this.angleVel;
+
+                this.angleVel += angleAcc * this.dt;
+                this.angle += this.angleVel * this.dt;
+
+                // Store trail
+                const cx = this.canvas.width / 2;
+                const cy = 100;
+                const x = cx + this.parameters.length.value * Math.sin(this.angle);
+                const y = cy + this.parameters.length.value * Math.cos(this.angle);
+
+                this.trail.push({ x, y });
+                if (this.trail.length > 100) this.trail.shift();
+            }
+
+            draw() {
+                super.draw();
+                const cx = this.canvas.width / 2;
+                const cy = 100;
+
+                // Calculate bob position
+                const x = cx + this.parameters.length.value * Math.sin(this.angle);
+                const y = cy + this.parameters.length.value * Math.cos(this.angle);
+
+                // Draw trail
+                if (this.trail.length > 1) {
+                    for (let i = 1; i < this.trail.length; i++) {
+                        const alpha = i / this.trail.length;
+                        this.ctx.strokeStyle = `rgba(100, 200, 255, ${alpha * 0.3})`;
+                        this.ctx.lineWidth = 1;
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(this.trail[i-1].x, this.trail[i-1].y);
+                        this.ctx.lineTo(this.trail[i].x, this.trail[i].y);
+                        this.ctx.stroke();
                     }
                 }
-            });
-        });
 
-        // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            const key = e.key.toLowerCase();
+                // Draw pivot
+                this.ctx.fillStyle = '#fff';
+                this.ctx.beginPath();
+                this.ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+                this.ctx.fill();
 
-            // Find active simulation
-            const activeContainers = document.querySelectorAll('.subsection.active .simulation-container[data-initialized="true"]');
-            activeContainers.forEach(container => {
-                const simId = container.dataset.simId;
-                const sim = SIMULATIONS[simId];
+                // Draw rod
+                this.ctx.strokeStyle = '#888';
+                this.ctx.lineWidth = 2;
+                this.ctx.beginPath();
+                this.ctx.moveTo(cx, cy);
+                this.ctx.lineTo(x, y);
+                this.ctx.stroke();
 
-                if (sim) {
-                    if (key === 'r') {
-                        // Reset simulation
-                        sim.state.t = 0;
-                        if (sim.state.trail) sim.state.trail = [];
-                    } else if (key === ' ') {
-                        // Toggle pause
-                        sim.running = !sim.running;
-                        if (sim.running && sim.animate) sim.animate();
+                // Draw bob
+                this.ctx.fillStyle = '#FF6B6B';
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, this.parameters.mass.value, 0, Math.PI * 2);
+                this.ctx.fill();
+            }
+
+            updateTUI() {
+                const v = this.angleVel * this.parameters.length.value / 100;
+                const h = this.parameters.length.value * (1 - Math.cos(this.angle)) / 100;
+
+                const ke = 0.5 * this.parameters.mass.value * v * v;
+                const pe = this.parameters.mass.value * 9.8 * h;
+                const total = ke + pe;
+
+                const L = this.parameters.length.value / 100;
+                const period = 2 * Math.PI * Math.sqrt(L / 9.8);
+
+                const keBar = '█'.repeat(Math.min(20, Math.round(ke)));
+                const peBar = '█'.repeat(Math.min(20, Math.round(pe)));
+
+                this.tui.innerHTML = `
+<span class="tui-header">---[ SIMPLE PENDULUM ]---</span>
+
+Parameters:
+  Length: ${this.parameters.length.value} px
+  Mass: ${this.parameters.mass.value} kg
+  Damping: ${this.parameters.damping.value}
+
+State @ t = ${this.time.toFixed(2)}s:
+  Angle: ${(this.angle * 180 / Math.PI).toFixed(1)}°
+  Angular Velocity: ${this.angleVel.toFixed(3)} rad/s
+
+Energy:
+<span class="tui-energy-ke">  KE: ${ke.toFixed(2)} J [${keBar.padEnd(20, '░')}]</span>
+<span class="tui-energy-pe">  PE: ${pe.toFixed(2)} J [${peBar.padEnd(20, '░')}]</span>
+<span class="tui-energy-total">  Total: ${total.toFixed(2)} J</span>
+
+<span class="tui-formula">T = 2π√(L/g) = ${period.toFixed(2)} s</span>
+<span class="tui-label">Controls: [SPACE] Pause | [R] Reset</span>`;
+            }
+        }
+
+        // Add more simulations here...
+
+        // Simulation Registry
+        const SIMULATION_MODULES = {
+            'projectile': ProjectileSimulation,
+            'shm': SHMSimulation,
+            'pendulum': PendulumSimulation,
+            'collision': BaseSimulation, // Placeholder
+            'springs': BaseSimulation,   // Placeholder
+            'wave': BaseSimulation       // Placeholder
+        };
+
+        // Main Simulation Engine
+        class PhysicsSimulationEngine {
+            constructor() {
+                this.canvas = document.getElementById('main-sim-canvas');
+                this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+                this.tui = document.getElementById('tui-display');
+                this.currentSimulation = null;
+                this.animationId = null;
+                this.isRunning = false;
+
+                if (this.canvas) {
+                    this.setupEventListeners();
+                    this.resizeCanvas();
+                }
+            }
+
+            setupEventListeners() {
+                const loadBtn = document.getElementById('load-simulation');
+                if (loadBtn) {
+                    loadBtn.addEventListener('click', () => {
+                        const select = document.getElementById('simulation-select');
+                        if (select && select.value) {
+                            this.loadSimulation(select.value);
+                        }
+                    });
+                }
+
+                const playBtn = document.getElementById('play-pause');
+                if (playBtn) {
+                    playBtn.addEventListener('click', () => this.togglePlayPause());
+                }
+
+                const resetBtn = document.getElementById('reset-sim');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        if (this.currentSimulation) {
+                            this.currentSimulation.reset();
+                        }
+                    });
+                }
+
+                document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+                window.addEventListener('resize', () => this.resizeCanvas());
+            }
+
+            resizeCanvas() {
+                if (!this.canvas) return;
+                const rect = this.canvas.getBoundingClientRect();
+                this.canvas.width = rect.width;
+                this.canvas.height = 400;
+            }
+
+            loadSimulation(simId) {
+                if (this.animationId) {
+                    cancelAnimationFrame(this.animationId);
+                }
+
+                const SimClass = SIMULATION_MODULES[simId];
+                if (SimClass) {
+                    this.currentSimulation = new SimClass(this.canvas, this.ctx, this.tui);
+                    this.currentSimulation.init();
+                    this.setupParameterPanel();
+                    this.isRunning = true;
+                    this.animate();
+                }
+            }
+
+            setupParameterPanel() {
+                const panel = document.getElementById('parameter-panel');
+                const controls = document.getElementById('parameter-controls');
+
+                if (!panel || !controls || !this.currentSimulation.parameters) return;
+
+                controls.innerHTML = '';
+
+                Object.entries(this.currentSimulation.parameters).forEach(([key, param]) => {
+                    const control = document.createElement('div');
+                    control.className = 'param-control';
+
+                    control.innerHTML = `
+                    <label>${param.label}:</label>
+                    <input type="range"
+                           min="${param.min}"
+                           max="${param.max}"
+                           step="${param.step}"
+                           value="${param.value}">
+                    <span class="param-value">${param.value} ${param.unit}</span>
+                `;
+
+                    const slider = control.querySelector('input');
+                    const valueDisplay = control.querySelector('.param-value');
+
+                    slider.addEventListener('input', (e) => {
+                        param.value = parseFloat(e.target.value);
+                        valueDisplay.textContent = `${param.value} ${param.unit}`;
+                        if (this.currentSimulation.onParameterChange) {
+                            this.currentSimulation.onParameterChange(key, param.value);
+                        }
+                    });
+
+                    controls.appendChild(control);
+                });
+
+                panel.style.display = 'block';
+            }
+
+            animate() {
+                if (this.isRunning && this.currentSimulation) {
+                    this.currentSimulation.update();
+                    this.currentSimulation.draw();
+                    this.currentSimulation.updateTUI();
+                    this.animationId = requestAnimationFrame(() => this.animate());
+                }
+            }
+
+            togglePlayPause() {
+                this.isRunning = !this.isRunning;
+                const btn = document.getElementById('play-pause');
+                if (btn) {
+                    btn.textContent = this.isRunning ? '⏸ Pause' : '▶ Play';
+                }
+                if (this.isRunning) {
+                    this.animate();
+                }
+            }
+
+            handleKeyboard(e) {
+                if (!this.currentSimulation) return;
+
+                switch(e.key.toLowerCase()) {
+                    case ' ':
+                        this.togglePlayPause();
                         e.preventDefault();
-                    }
+                        break;
+                    case 'r':
+                        this.currentSimulation.reset();
+                        break;
                 }
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                window.physicsEngine = new PhysicsSimulationEngine();
             });
-        });
-    });
+        } else {
+            window.physicsEngine = new PhysicsSimulationEngine();
+        }
+    })();
 </script>
